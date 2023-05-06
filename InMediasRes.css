@@ -1,5 +1,22 @@
 body{
-    height: 750px;
+    height: 770px;
     background-color: #427EBA;
     background-image: linear-gradient(#769ED2,#7DA4D5,#9FBEE3,#B7D1EE,#C5DDF4,#CAE1F6);
 }
+
+.logo{
+    position: absolute;
+    width: 575px;
+    height: 300px;
+    left: 440px;
+    top: 25px;
+}
+
+.porta{
+    position: absolute;
+    left: 38.28%;
+    right: 38.2%;
+    top: 36.9%;
+    bottom: 0%;
+}
+
