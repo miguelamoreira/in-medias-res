@@ -1,0 +1,20 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background: rgb(202,225,246);
+    background: linear-gradient(0deg, rgba(118,158,210,1) 10%, rgba(91,140,198,1) 25%, rgba(73,128,190,1) 45%, rgba(67,124,187,1) 60%);
+}
+
+.login-darker {
+    background: rgb(202,225,246);
+    background: linear-gradient(0deg, rgba(118,158,211,0) 0%, rgba(118,158,211,0.06) 5%, rgba(118,158,211,0.25) 10%, rgba(118,158,211,0.43) 15%, rgba(118,158,210,0.59) 20%, rgba(118,158,210,0.72) 25%, rgba(118,158,210,0.82) 30%, rgba(118,158,210,0.90) 40%, rgba(118,158,210,0.96) 50%, rgba(118,158,210,0.99) 65%, rgba(118,158,210,1) 100%);
+}
+
+.login-lighter {
+    padding: 5em;
+    background-color: rgba(199, 223, 245, 0.5);
+}

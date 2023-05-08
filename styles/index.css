@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background: rgb(202,225,246);
+    background: linear-gradient(0deg, rgba(202,225,246,1) 25%, rgba(197,221,244,1) 35%, rgba(183,209,238,1) 50%, rgba(159,190,227,1) 70%, rgba(125,164,213,1) 95%, rgba(118,158,210,1) 100%);
+}
+
+.logo {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.door {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    padding-top: 2em;
+}
