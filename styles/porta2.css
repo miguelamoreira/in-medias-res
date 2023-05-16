@@ -8,30 +8,3 @@ body {
     background: rgb(202,225,246);
     background: linear-gradient(0deg, rgba(202,225,246,1) 25%, rgba(197,221,244,1) 35%, rgba(183,209,238,1) 50%, rgba(159,190,227,1) 70%, rgba(125,164,213,1) 95%, rgba(118,158,210,1) 100%);
 }
-
-.TopDoor {
-    position: relative;
-    transform: matrix(1, 0.07, 0.07, -1, 0, 0);
-}
-
-.SmallTopDoor{
-    position: absolute; /* Esta posiçao faz com que a porta acompanhe o scroll... Talvez em grid conseguimos fazer funcionar*/
-    left: 65.75%;
-    right: 16.34%;
-    top: 3%;
-    bottom: 90.78%;
-}
-.TopMiddleDoor{
-    position: relative;
-    left: 29.61%;
-    right: 44.79%;
-    top: 16.76%;
-    bottom: 67.53%;
-    transform: rotate(-4.11deg);
-}
-.door {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    padding-top: 2em;
-}
