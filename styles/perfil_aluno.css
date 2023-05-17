@@ -1,0 +1,183 @@
+@import url('https://fonts.cdnfonts.com/css/heathergreen');
+@import url('https://fonts.cdnfonts.com/css/futura-pt');
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: rgb(202,225,246);
+    background: linear-gradient(0deg, rgba(118,158,210,1) 10%, rgba(91,140,198,1) 25%, rgba(73,128,190,1) 45%, rgba(67,124,187,1) 60%);
+}
+
+.clouds {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+}
+
+@-webkit-keyframes animateCloud {
+    0% {
+        margin-left: -500px;
+    }
+    100% {
+        margin-left: 100%;
+    }
+}
+
+@-moz-keyframes animateCloud {
+    0% {
+        margin-left: -500px;
+    }
+    100% {
+        margin-left: 100%;
+    }
+}
+
+@keyframes animateCloud {
+    0% {
+        margin-left: -500px;
+    }
+    100% {
+        margin-left: 100%;
+    }
+}
+
+.sm-cloud {
+	-webkit-animation: animateCloud 40s linear infinite;
+	-moz-animation: animateCloud 40s linear infinite;
+	animation: animateCloud 40s linear infinite;
+}
+
+.md-cloud {
+	-webkit-animation: animateCloud 20s linear infinite;
+	-moz-animation: animateCloud 20s linear infinite;
+	animation: animateCloud 20s linear infinite;
+}
+
+.lg-cloud {
+	-webkit-animation: animateCloud 30s linear infinite;
+	-moz-animation: animateCloud 30s linear infinite;
+	animation: animateCloud 30s linear infinite;
+}
+
+#btnReturn, #btnChange {
+    background-color: transparent;
+    border: none;
+    overflow: hidden;
+    outline: none;
+}
+
+.img {
+    width: 5em;
+    height: 5em;
+}
+
+.img:hover {
+    content: url('../assets/seta_depois.png');
+}
+
+h1 {
+    color: rgba(255, 237, 199, 1);
+    font-family: 'Heathergreen', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 5em;
+    line-height: 0;
+    letter-spacing: 0.11em;
+}
+
+.avatar {
+    position: relative;
+    top: 8em;
+    right: 5em;
+}
+
+#btnChange {
+    width: 2em;
+    height: 2em;
+    border-radius: 100%;
+    background-color: rgba(66, 126, 186, 1);
+    position: relative;
+    top: 7.5em;
+    right: 7em;
+}
+
+.info-user, .borderless th, .borderless td {
+    color: rgba(255, 237, 199, 1);
+    font-family: 'Futura PT', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 43px;
+    text-align: center;
+    text-align: center;
+}
+
+.info-user {
+    position: relative;
+    top: 6.5em;
+}
+
+.borderless th, .borderless tr, .borderless td {
+    border: none;
+}
+
+.borderless td {
+    height: 3.5em;
+}
+
+#btnPass {
+    background-color: rgba(255, 237, 199, 1);
+    border: none;
+    border-radius: 20px;
+    font-family: 'Futura PT', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    white-space: normal;
+    width: 215px;
+    position: relative;
+    bottom: 8em;
+}
+
+@media (max-width: 576px) {
+    .img {
+        width: 4em;
+        height: 4em;
+    }
+
+    h1 {
+        font-size: 4.5em;
+    }
+
+    .avatar {
+        right: 2em;
+        width: 7em;
+        height: 7em;
+    }
+
+    #btnChange {
+        right: 4em;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    table {
+        position: relative;
+        bottom: 3.5em;
+    }
+
+    .borderless th, .borderless td {
+        font-size: 20px;
+    }
+
+    #btnPass {
+        width: 200px;
+        bottom: 6em;
+    }
+}
+
