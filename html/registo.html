@@ -27,23 +27,28 @@
                     <h3 class="mx-auto card-subtitle invisible">dados de conta</h3>
                     <div class="visible card-text">
                         <div class="d-flex flex-row justify-content-center">
-                            <div class="d-flex flex-column m-4">
+                            <div class="d-flex flex-column mx-2">
                                 <label for="name">nome:</label>
                                 <input type="text" name="name" id="name">
                             </div>
-                            <div class="d-flex flex-column m-4">
+                            <div class="d-flex flex-column mx-2">
                                 <label for="location">localidade:</label>
                                 <input type="text" name="location" id="location">
                             </div>
                         </div>
                         <div class="d-flex flex-row  justify-content-center">
-                            <div class="d-flex flex-column">
+                            <div class="d-flex flex-column mx-2">
                                 <label for="dateOfBirth">data de nascimento:</label>
-                                <input type="date" name="dateOfBirth" id="dateOfBirth">
+                                <input type="date" name="dateOfBirth" id="dateOfBirth" class="btn">
                             </div>
-                            <div class="d-flex flex-column dropdown">
+                            <div class="d-flex flex-column dropdown mx-2">
                                 <label for="gender">género:</label>
-                                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" id="gender">género</button>
+                                <select class="form-control btn" id="gender">
+                                    <option value=""></option>
+                                    <option value="male">masculino</option>
+                                    <option value="female">feminino</option>
+                                    <option value="other">outro</option>
+                                </select>
                             </div>
                         </div>
                     </div>

@@ -114,8 +114,8 @@ h3 {
     font-size: 24px;
 }
 
-input, button.dropdown-toggle {
-    width: 10em;
+input, .btn, select option {
+    width: 13em;
     height: 3em;
     background-color: rgba(255, 237, 199, 1);
     border: none;
