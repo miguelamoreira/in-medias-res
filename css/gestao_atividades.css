@@ -121,8 +121,13 @@ p, .username {
     font-size: 22px;
 }
 
+.btn, .btn:hover {
+    width: 35vh;
+    height: 20vh;
+    background-image: url('../assets/button.png');
+    background-repeat: no-repeat;
+    background-position: center; 
 
-span {
     font-family: 'Heathergreen';
     font-style: normal;
     font-weight: 400;
@@ -130,7 +135,9 @@ span {
     line-height: 43px;
     letter-spacing: 0.11em;
     color: #FFEDC7;
+    text-align: center;
 }
+
 
 @media (max-width: 576px) {
     .img {
