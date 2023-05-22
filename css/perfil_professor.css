@@ -3,7 +3,6 @@
 
 html, body {
     height: 100%;
-    width: 100%;
     overflow: hidden;
 }
 
@@ -63,7 +62,7 @@ body {
 	animation: animateCloud 30s linear infinite;
 }
 
-#btnReturn, #btnChange {
+#btnReturn {
     background-color: transparent;
     border: none;
     overflow: hidden;
@@ -79,6 +78,15 @@ body {
     content: url('../assets/seta_depois.png');
 }
 
+.card {
+    background-color: transparent;
+    width: 33.5em;
+}
+
+.card-content {
+    top: 5.5em;
+}
+
 h1 {
     color: rgba(255, 237, 199, 1);
     font-family: 'Heathergreen', sans-serif;
@@ -89,23 +97,16 @@ h1 {
     letter-spacing: 0.11em;
 }
 
-.avatar {
-    position: relative;
-    top: 8em;
-    right: 5em;
-}
-
 #btnChange {
     width: 2em;
     height: 2em;
     border-radius: 100%;
     background-color: rgba(66, 126, 186, 1);
     position: relative;
-    top: 7.5em;
-    right: 7em;
+    right: 1.5em;
 }
 
-.info-user {
+p {
     color: rgba(255, 237, 199, 1);
     font-family: 'Futura-Medium', sans-serif;
     font-style: normal;
@@ -113,15 +114,9 @@ h1 {
     font-size: 22px;
     line-height: 43px;
     text-align: center;
-    text-align: center;
 }
 
-.info-user {
-    position: relative;
-    top: 6.5em;
-}
-
-#btnActivities, #btnUsers, #btnPass {
+#btnAti, #btnUsers, #btnPass {
     background-color: rgba(255, 237, 199, 1);
     border: none;
     border-radius: 20px;
@@ -129,17 +124,7 @@ h1 {
     font-weight: 500;
     font-size: 16px;
     white-space: normal;
-    width: 215px;
-    position: relative;
-}
-
-#btnPass {
-    bottom: 10em;
-}
-
-#btnActivities ,#btnUsers {
-    margin: 1em;
-    top: 2em;
+    width: 12em;
 }
 
 @media (max-width: 576px) {
@@ -151,30 +136,33 @@ h1 {
     h1 {
         font-size: 4.5em;
     }
+}
 
-    .avatar {
-        right: 2em;
-        width: 7em;
-        height: 7em;
+@media (min-width: 1550px) {
+    .lg-cloud {
+        position: relative;
+        top: 5em;
     }
 
-    #btnChange {
-        right: 4em;
+    .card {
+        width: 45em;
+    }
+
+    .card-content {
+        top: 6.5em;
+    }
+
+    h1 {
+        font-size: 6.5em;
     }
 
     p {
-        font-size: 20px;
+        margin-left: 2.5em;;
+        font-size: 1.6em;
     }
 
-    #btnActivities ,#btnUsers {
-        width: 200px;
-        margin: 0.2em;
-        top: 2em;
-    }
-
-    #btnPass {
-        width: 200px;
-        bottom: 6em;
+    #btnAti, #btnUsers, #btnPass {
+        margin-top: 2em;
+        font-size: 1.3em;
     }
 }
-

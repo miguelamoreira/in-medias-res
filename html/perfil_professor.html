@@ -10,32 +10,32 @@
 </head>
 <body>
     <div class="container-fluid">
+        <nav class="navbar">
+            <button id="btnReturn"><img src="../assets/seta_antes.png" class="img float-start mb-1"></button>
+        </nav>
         <div class="row">
-            <div class="col-2">
-                <button id="btnReturn"><img src="../assets/seta_antes.png" class="img float-start mb-1"></button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-                <img src="../assets/card.png" class="img-fluid">
-            </div> 
-            <div class="d-flex justify-content-center position-absolute mt-5">
-                <h1 class="text-center mt-5">PERFIL</h1>
-            </div>
-            <div class="d-flex justify-content-center position-absolute mt-5">
-                <img src="../assets/avatar.png" alt="Avatar do utilizador" class="avatar">
-                <button id="btnChange"><img src="../assets/pencil-fill.svg"></button>
-                <div class="info-user">
-                    <p>username</p>
-                    <p>localidade</p>
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="card border-0 position-relative">
+                    <img src="../assets/card.png" class="card-img position-absolute top-0 start-0">
+                    <div class="card-content position-relative">
+                        <h1 class="text-center mb-lg-5 mb-sm-3">PERFIL</h1>
+                        <div class="d-flex justify-content-center flex-row mb-4">
+                            <img src="../assets/Stitch.png" alt="Avatar do utilizador" class="avatar  mt-5">
+                            <button id="btnChange" class="border-0 mt-5 me-5"><img src="../assets/pencil-fill.svg"></button>
+                            <div class="info-user align-self-center ms-5 mt-5">
+                                <p>username</p>
+                                <p>localidade</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-evenly align-self-end top-50 position-relative p-4 mt-5">
+                            <button id="btnAti">GESTÃO <br>ATIVIDADE</button>
+                            <button id="btnUsers">GESTÃO <br>UTILIZADORES</button>
+                        </div>
+                        <div class="d-flex justify-content-center align-self-end mt-4">
+                            <button id="btnPass">ALTERAR <br>PALAVRA-PASSE</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-center position-absolute mt-5 top-50">
-                <button id="btnActivities">GESTÃO <br>ATIVIDADE</button>
-                <button id="btnUsers">GESTÃO <br>UTILIZADORES</button>
-            </div>
-            <div class="d-flex justify-content-center align-self-end">
-                <button id="btnPass">ALTERAR <br>PALAVRA-PASSE</button>
             </div>
         </div>
         <div class="clouds">
@@ -52,6 +52,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/perfil_professor.js" type="module"></script>
+    <script src="../js/leaderboard.js" type="module"></script>
 </body>
 </html>

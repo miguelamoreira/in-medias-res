@@ -3,7 +3,6 @@
 
 html, body {
     height: 100%;
-    width: 100%;
     overflow: hidden;
 }
 
@@ -63,7 +62,7 @@ body {
 	animation: animateCloud 30s linear infinite;
 }
 
-#btnReturn, #btnChange {
+#btnReturn {
     background-color: transparent;
     border: none;
     overflow: hidden;
@@ -79,6 +78,15 @@ body {
     content: url('../assets/seta_depois.png');
 }
 
+.card {
+    background-color: transparent;
+    width: 33.5em;
+}
+
+.card-content {
+    top: 5.5em;
+}
+
 h1 {
     color: rgba(255, 237, 199, 1);
     font-family: 'Heathergreen', sans-serif;
@@ -89,23 +97,16 @@ h1 {
     letter-spacing: 0.11em;
 }
 
-.avatar {
-    position: relative;
-    top: 8em;
-    right: 5em;
-}
-
 #btnChange {
     width: 2em;
     height: 2em;
     border-radius: 100%;
     background-color: rgba(66, 126, 186, 1);
     position: relative;
-    top: 7.5em;
-    right: 7em;
+    right: 1.5em;
 }
 
-.info-user, .borderless th, .borderless td {
+p {
     color: rgba(255, 237, 199, 1);
     font-family: 'Futura-Medium', sans-serif;
     font-style: normal;
@@ -113,20 +114,22 @@ h1 {
     font-size: 22px;
     line-height: 43px;
     text-align: center;
-    text-align: center;
 }
 
-.info-user {
-    position: relative;
-    top: 6.5em;
-}
-
-.borderless th, .borderless tr, .borderless td {
+.borderless tr, .borderless td {
     border: none;
+    color: rgba(255, 237, 199, 1);
+    font-family: 'Futura-Medium', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 43px;
+    text-align: center;
 }
 
 .borderless td {
     height: 3.5em;
+    width: 2em;
 }
 
 #btnPass {
@@ -138,8 +141,6 @@ h1 {
     font-size: 16px;
     white-space: normal;
     width: 215px;
-    position: relative;
-    bottom: 8em;
 }
 
 @media (max-width: 576px) {
@@ -152,32 +153,45 @@ h1 {
         font-size: 4.5em;
     }
 
-    .avatar {
-        right: 2em;
-        width: 7em;
-        height: 7em;
-    }
-
-    #btnChange {
-        right: 4em;
-    }
-
-    p {
-        font-size: 20px;
-    }
-
-    table {
-        position: relative;
-        bottom: 3.5em;
-    }
-
-    .borderless th, .borderless td {
-        font-size: 20px;
-    }
-
-    #btnPass {
-        width: 200px;
-        bottom: 6em;
+    .borderless td {
+        height: 2em;
     }
 }
 
+@media (min-width: 1550px) {
+    .lg-cloud {
+        position: relative;
+        top: 5em;
+    }
+
+    .card {
+        width: 45em;
+    }
+
+    .card-content {
+        top: 6.5em;
+    }
+
+    h1 {
+        font-size: 6.5em;
+    }
+
+    p {
+        margin-left: 2.5em;;
+        font-size: 1.6em;
+    }
+
+    table {
+        margin-top: 5em;
+        width: 30em;
+    }
+
+    .borderless tr, .borderless td {
+        font-size: 1.6em;
+    }
+
+    #btnPass {
+        font-size: 1.3em;
+        width: 12em;
+    }
+}
