@@ -10,26 +10,24 @@
 </head>
 <body>
     <div class="container-fluid">
+        <nav class="navbar">
+            <button id="btnReturn"><img src="../assets/seta_antes.png" class="img float-start mb-1"></button>
+        </nav>
         <div class="row">
-            <div class="col-2">
-                <button id="btnReturn"><img src="../assets/seta_antes.png" class="img float-start mb-1"></button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-                <img src="../assets/card.png" class="img-fluid">
-            </div> 
-            <div class="d-flex justify-content-center position-absolute mt-5">
-                <h1 class="text-center mt-5">COMO JOGAR</h1>
-            </div>
-            <div class="d-flex justify-content-center position-absolute mt-5 info-text">
-                <p class="visible position-absolute start-50">Tenta escapar do universo cinematográfico da Disney e da Pixar através da resolução de desafios. Explora as salas de modo a encontrares os desafios nelas contidas e a aprenderes mais sobre estas produtoras e os seus projetos.</p>
-                <p class="invisible position-absolute start-50">Simultaneamente, tenta ajudar o escuteiro preferido da Pixar, o Russel, a encontrar os seus pins.
-                    Para além disso, procura resolver os desafios o mais rapidamente possível para poderes aparecer na leaderboard!</p>
-            </div>
-            <div class="d-flex justify-content-center">
-                <button id="btnScroll"><img src="../assets/arrow1.png" class="arrow"></button>
-            </div>
+            <div class="d-flex align-content-between justify-content-center">
+                <div class="card border-0 position-relative">
+                    <img src="../assets/card.png" class="card-img position-absolute top-0 start-0 img-fluid">
+                    <div class="card-content position-relative d-flex flex-column align-items-center justify-content-between">
+                        <h1 class="text-center mt-5 mb-md-5 mb-sm-3">COMO JOGAR</h1>
+                        <div class="text-center mt-5 mb-md-5">
+                          <p id="card-info">Tenta escapar do universo cinematográfico da Disney e da Pixar através da resolução de desafios. Explora as salas de modo a encontrares os desafios nelas contidas e a aprenderes mais sobre estas produtoras e os seus projetos.</p>
+                        </div>
+                        <div class="text-center mb-5">
+                          <button id="btnScroll"><img src="../assets/arrow1.png" class="arrow"></button>
+                        </div>
+                      </div>
+                      
+                </div>
         </div>
         <div class="clouds">
             <div class="sm-cloud">
