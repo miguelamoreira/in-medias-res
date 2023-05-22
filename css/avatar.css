@@ -3,23 +3,12 @@
 
 html, body {
     height: 100%;
-    width: 100%;
     overflow: hidden;
 }
 
 body {
     background: rgb(202,225,246);
     background: linear-gradient(0deg, rgba(118,158,210,1) 10%, rgba(91,140,198,1) 25%, rgba(73,128,190,1) 45%, rgba(67,124,187,1) 60%);
-}
-
-h1 {
-    color: rgba(255, 237, 199, 1);
-    font-family: 'Heathergreen', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 5em;
-    line-height: 0;
-    letter-spacing: 0.11em;
 }
 
 .clouds {
@@ -73,7 +62,7 @@ h1 {
 	animation: animateCloud 30s linear infinite;
 }
 
-#btnReturn, #btnSave {
+#btnReturn {
     background-color: transparent;
     border: none;
     overflow: hidden;
@@ -90,38 +79,22 @@ h1 {
 }
 
 .card {
-    background: transparent;
+    background-color: transparent;
+    width: 60em;
 }
 
-.card-body {
-    position: relative;
-    transform: translateY(-34em);
+.card-content {
+    top: 5.5em;
 }
 
-label {
+h1 {
     color: rgba(255, 237, 199, 1);
-    font-family: 'Futura-Medium', sans-serif;
-    font-weight: 500;
-    font-size: 22px;
-}
-
-.Stitch, .Mickey, .Moana{
-    margin-top: 10%;
-    padding-right: 10%;
-}
-
-.Stitch{
-    margin-left: 3%;
-}
-
-.Pooh, .Remy, .Boo{
-    margin-top: 25%;
-    padding-right: 10.5%;
-    opacity: 0.5;
-}
-
-.Pooh{
-    margin-left: 10%;
+    font-family: 'Heathergreen', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 5em;
+    line-height: 0;
+    letter-spacing: 0.11em;
 }
 
 @media (max-width: 576px) {
@@ -131,16 +104,32 @@ label {
     }
 
     h1 {
-        font-size: 3.5em;
+        font-size: 4.5em;
+    }
+}
+
+@media (max-width: 768px) {
+    #cardImg {
+        content: url("../assets/card.png");
+    }
+}
+
+@media (min-width: 1550px) {
+    .lg-cloud {
+        position: relative;
+        top: 5em;
     }
 
-    .card-body {
-        transform: translateY(-30em);
+    .card {
+        width: 80em;
     }
 
-    .Stitch, .Mickey, .Moana, .Pooh, .Remy, .Boo {
-        right: 2em;
-        width: 7em;
-        height: 7em;
+    .card-content {
+        top: 6.5em;
+    }
+
+    h1 {
+        font-size: 6.5em;
+        margin-bottom: 1em;
     }
 }
