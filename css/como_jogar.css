@@ -1,5 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/heathergreen');
-@import url('https://fonts.cdnfonts.com/css/futura-medium');
+@import url('https://fonts.cdnfonts.com/css/futura-pt');
 
 html, body {
     height: 100%;
@@ -104,7 +104,7 @@ h1 {
 
 p {
     color: rgba(255, 237, 199, 1);
-    font-family: 'Futura-Medium', sans-serif;
+    font-family: 'Futura PT', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 22px;

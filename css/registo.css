@@ -1,5 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/heathergreen');
-@import url('https://fonts.cdnfonts.com/css/futura-medium');
+@import url('https://fonts.cdnfonts.com/css/futura-pt');
 
 html, body {
     height: 100%;
@@ -111,13 +111,25 @@ h1 {
 
 label {
     color: rgba(255, 237, 199, 1);
-    font-family: 'Futura-Medium', sans-serif;
+    font-family: 'Futura PT', sans-serif;
     font-weight: 500;
     font-size: 22px;
 }
 
+<<<<<<< Updated upstream
 input{
     width: 20em;
+=======
+h3 {
+    color: rgba(255, 237, 199, 1);
+    font-family: 'Futura PT', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+input, .btn, select option {
+    width: 13em;
+>>>>>>> Stashed changes
     height: 3em;
     background-color: rgba(255, 237, 199, 1);
     border: none;

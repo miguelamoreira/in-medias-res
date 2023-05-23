@@ -23,8 +23,7 @@ export function add(username, email, password, password2) {
 
 export function login(username, password) {
     const user = users.find(
-      (user) => user.username === username && user.password === password
-    );
+      (user) => user.username === username && user.password === password);
     if (user) {
       sessionStorage.setItem("loggedUser", JSON.stringify(user));
       return true;
@@ -49,12 +48,20 @@ class user {
     username = '';
     email = '';
     password = '';
-    password2 = '';
+    image = '';
+    time = '';
+    pins = '';
+    status = '';
+    type = '';
 
-    constructor(username, email, password, password2) {
+    constructor(username, email, password, image, time, pin, status, type) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.password2 = password2;
+        this.image = image;
+        this.time = time;
+        this.pin = pin;
+        this.status = status;
+        this.type = type;
     }
 }
