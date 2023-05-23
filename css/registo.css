@@ -88,6 +88,15 @@ body {
     transform: translateY(-34em);
 }
 
+.visible, .invisible {
+    position: absolute;
+}
+
+#btnScroll {
+    position: relative;
+    top: 21em
+}
+
 
 h1 {
     color: rgba(255, 237, 199, 1);
@@ -107,24 +116,13 @@ label {
     font-size: 22px;
 }
 
-h3 {
-    color: rgba(255, 237, 199, 1);
-    font-family: 'Futura-Medium', sans-serif;
-    font-weight: 500;
-    font-size: 24px;
-}
-
-input, .btn, select option {
-    width: 13em;
+input{
+    width: 20em;
     height: 3em;
     background-color: rgba(255, 237, 199, 1);
     border: none;
     border-radius: 0.5em;
     margin-bottom: 2em;
-}
-
-#btnScroll {
-    position: relative;
 }
 
 @media (max-width: 576px) {

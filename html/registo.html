@@ -23,37 +23,30 @@
                   <img src="../assets/card.png" class="img-fluid">
                   <div class="card-body text-center">
                     <h1 class="mx-auto card-title mb-5">REGISTAR</h1>
-                    <h3 class="mx-auto card-subtitle visible">dados pessoais</h3>
-                    <h3 class="mx-auto card-subtitle invisible">dados de conta</h3>
-                    <div class="visible card-text">
-                        <div class="d-flex flex-row justify-content-center">
-                            <div class="d-flex flex-column mx-2">
-                                <label for="name">nome:</label>
-                                <input type="text" name="name" id="name">
+                    <div class="d-flex flex-column align-items-center card-text">
+                        <div class="visible">
+                            <div class="d-flex flex-column mt-5">
+                                <label for="txtUser">username:</label>
+                                <input type="text" name="txtUser" id="txtUser">
                             </div>
-                            <div class="d-flex flex-column mx-2">
-                                <label for="location">localidade:</label>
-                                <input type="text" name="location" id="location">
+                            <div class="d-flex flex-column mt-3">
+                                <label for="email">email:</label>
+                                <input type="email" name="email" id="email">
                             </div>
                         </div>
-                        <div class="d-flex flex-row  justify-content-center">
-                            <div class="d-flex flex-column mx-2">
-                                <label for="dateOfBirth">data de nascimento:</label>
-                                <input type="date" name="dateOfBirth" id="dateOfBirth" class="btn">
+                        <div class="invisible">
+                            <div class="d-flex flex-column mt-5">
+                                <label for="password">palavra-passe:</label>
+                                <input type="password" name="password" id="password">
                             </div>
-                            <div class="d-flex flex-column dropdown mx-2">
-                                <label for="gender">género:</label>
-                                <select class="form-control btn" id="gender">
-                                    <option value=""></option>
-                                    <option value="male">masculino</option>
-                                    <option value="female">feminino</option>
-                                    <option value="other">outro</option>
-                                </select>
+                            <div class="d-flex flex-column mt-3">
+                                <label for="passwordVal">confirmação da palavra-passe:</label>
+                                <input type="password" name="password" id="passwordVal">
                             </div>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <button id="btnScroll"><img src="../assets/arrow1.png" class="arrow"></button>
+                        <div class="text-center mb-5">
+                            <button id="btnScroll"><img src="../assets/arrow1.png" class="arrow"></button>
+                        </div>
                     </div>
                   </div>
                 </div>
