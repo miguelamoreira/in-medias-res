@@ -87,6 +87,16 @@ body {
     top: 2.5em;
 }
 
+.visible, .invisible {
+    position: absolute;
+    top: 8em;
+}
+
+#btnScroll {
+    position: relative;
+    top: 23em
+}
+
 h1 {
     color: rgba(255, 237, 199, 1);
     font-family: 'Heathergreen', sans-serif;
