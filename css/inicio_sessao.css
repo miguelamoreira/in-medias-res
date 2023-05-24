@@ -20,7 +20,7 @@ body {
 
 @-webkit-keyframes animateCloud {
     0% {
-        margin-left: -500px;
+        margin-left: -600px;
     }
     100% {
         margin-left: 100%;
@@ -29,7 +29,7 @@ body {
 
 @-moz-keyframes animateCloud {
     0% {
-        margin-left: -500px;
+        margin-left: -600px;
     }
     100% {
         margin-left: 100%;
@@ -38,7 +38,7 @@ body {
 
 @keyframes animateCloud {
     0% {
-        margin-left: -500px;
+        margin-left: -600px;
     }
     100% {
         margin-left: 100%;
@@ -100,14 +100,19 @@ h1 {
     top: 2em;
 }
 
-label {
+label, a {
     color: rgba(255, 237, 199, 1);
     font-family: 'Futura PT', sans-serif;
     font-weight: 500;
     font-size: 22px;
 }
 
-input[type='password'],input[type='email'] {
+a, a:hover, a:active {
+    text-decoration: none;
+    color:rgba(255, 237, 199, 1);
+}
+
+input {
     width: 20em;
     height: 3em;
     background-color: rgba(255, 237, 199, 1);
@@ -116,13 +121,16 @@ input[type='password'],input[type='email'] {
     margin-bottom: 2em;
 }
 
-input[type='checkbox'] {
-    height: 2em;
-    width: 2em;
-    border: none;
-    border-radius: 0.5em;
-    margin-bottom: 2em;
-    background-color: rgba(255, 237, 199, 1);
+#btnSave {
+    font-family: 'Heathergreen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 43px;
+    letter-spacing: 0.11em;
+    color: #FFEDC7;
+    text-align: center;
+    margin-bottom: 8em;
 }
 
 @media (max-width: 576px) {
