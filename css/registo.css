@@ -128,11 +128,6 @@ input {
     top: 18em;
 }
 
-.btnSave {
-    position: relative;
-    top: 5em;
-}
-
 #btnSave {
     font-family: 'Heathergreen';
     font-style: normal;
@@ -154,20 +149,22 @@ input {
         font-size: 4.5em;
     }
 
-    .btnSave {
-        position: relative;
-        top: 28em;
+    a {
+        top: 17.5em;
+    }
+
+    #btnSave {
+        margin-top: 8em;
     }
 }
 
 @media (min-width: 576px) and (max-width: 992px){
-    .btnSave {
-        position: relative;
-        top: 28em;
+    #btnSave {
+        margin-top: 8em;
     }
 
-    #btnSave {
-        margin-top: 0.5em;
+    a {
+        top: 17em;
     }
 }
 
