@@ -1,18 +1,3 @@
-const btnActions = document.querySelectorAll('.btnAction');
-let isActive = true;
-
-btnActions.forEach(btnAction => {
-    btnAction.addEventListener('click', function() {
-        if (isActive) {
-            btnAction.innerHTML = 'DESATIVAR';
-            isActive = false; 
-        } else {
-            btnAction.innerHTML = 'ATIVAR';
-            isActive = true; 
-        }
-    });
-});
-
 const btnArrow = document.getElementById('btnScroll');
 const imgBtn = document.querySelector('.arrow');
 const firstTxt = document.querySelector('.visible');
@@ -31,4 +16,19 @@ btnArrow.addEventListener('click', function() {
         imgBtn.src = '../assets/arrow1.png';
         isArrow1 = true; 
     }
+});
+
+const btnActions = document.querySelectorAll('.btnAction');
+let isUnblocked = true;
+
+btnActions.forEach(btnAction => {
+    btnAction.addEventListener('click', function() {
+        if (isUnblocked) {
+            btnAction.innerHTML = 'DESATIVAR';
+            isUnblocked = false; 
+        } else {
+            btnAction.innerHTML = 'ATIVAR';
+            isUnblocked = true; 
+        }
+    });
 });

@@ -10,64 +10,53 @@
 </head>
 <body>
     <div class="container-fluid">
+        <nav class="navbar">
+            <button id="btnReturn"><img src="../assets/seta_antes.png" class="img float-start mb-1"></button>
+        </nav>
         <div class="row">
-            <div class="col-1">
-                <button id="btnReturn"><img src="../assets/seta_antes.png" class="img float-start mb-1"></button>
-            </div>
-        </div>
-        <div class="row justify-content-lg-start justify-content-md-center">
-            <div class="col-1"></div>
-            <div class="col-lg-5 col-md-8 col-sm-12 text-center">
-              <div class="d-flex flex-column align-items-center">
-                <div class="card border-0">
-                  <img src="../assets/card.png" class="img-fluid">
-                  <div class="card-body text-center">
-                    <h1 class="mx-auto card-title mb-5">REGISTAR</h1>
-                    <div class="d-flex flex-column align-items-center card-text">
-                        <div class="visible">
-                            <div class="d-flex flex-column mt-5">
-                                <label for="txtUser">username:</label>
-                                <input type="text" name="txtUser" id="txtUser">
+            <div class="col-lg-6 offset-lg-2 order-lg-2 d-flex">
+                <div class="card border-0 position-relative">
+                    <img src="../assets/card.png" class="card-img position-absolute top-0 start-0">
+                    <div class="card-content position-relative">
+                        <h1 class="text-center mt-5">REGISTAR</h1>
+                        <div class="d-flex flex-column align-items-center p-xl-5 register-fields">
+                            <div class="visible">
+                                <div class="d-flex flex-column mt-2 mb-xl-3 text-center">
+                                    <label for="loginUser">username:</label>
+                                    <input type="text" name="oldPass" id="loginUser">
+                                </div>
+                                <div class="d-flex flex-column mb-xl-2 text-center">
+                                    <label for="loginEmail">email:</label>
+                                    <input type="email" name="newPass" id="loginEmail">
+                                </div>
                             </div>
-                            <div class="d-flex flex-column mt-3">
-                                <label for="email">email:</label>
-                                <input type="email" name="email" id="email">
+                            <div class="invisible">
+                                <div class="d-flex flex-column mt-2 mb-xl-3 text-center">
+                                    <label for="loginPass">palavra-passe:</label>
+                                    <input type="password" name="oldPass" id="loginPass">
+                                </div>
+                                <div class="d-flex flex-column mb-xl-2 text-center">
+                                    <label for="loginConfirmPass">confirmar palavra-passe:</label>
+                                    <input type="password" name="newPass" id="loginConfirmPass">
+                                </div>
                             </div>
-                        </div>
-                        <div class="invisible">
-                            <div class="d-flex flex-column mt-5">
-                                <label for="password">palavra-passe:</label>
-                                <input type="password" name="password" id="password">
+                            <div class="text-center mb-xxl-5">
+                                <button id="btnScroll"><img src="../assets/arrow1.png" class="arrow"></button>
                             </div>
-                            <div class="d-flex flex-column mt-3">
-                                <label for="passwordVal">confirmar palavra-passe:</label>
-                                <input type="password" name="password" id="passwordVal">
-                            </div>
-                        </div>
-                        <div class="text-center mb-5">
-                            <button id="btnScroll"><img src="../assets/arrow1.png" class="arrow"></button>
                         </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-            <div class="col-lg-6 order-lg-2 align-items-center d-flex justify-content-center">
-                <div class="d-flex flex-column align-items-center">
-                    <a href="" class="text-center mb-2">já tens conta?</a>
+            <div class="col-lg-4 order-lg-1 mt-5 align-items-center d-flex justify-content-center">
+                <div class="d-flex flex-column align-items-center mt-5 btnSave">
+                    <a href="" class="text-center">já tens conta?</a>
                     <button id="btnSave" class="position-relative">
                         <img src="../assets/button.png" class="img-fluid">
                         <span class="position-absolute top-0 start-50 translate-middle-x mt-5">REGISTAR</span>
                     </button>
                 </div>
             </div>
-
-          </div>
-          
-          
-          
-
-          
+        </div>
         <div class="clouds">
             <div class="sm-cloud">
                 <img src="../assets/nuvem_pequena.png" alt="Small cloud moving in the background">
@@ -80,7 +69,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/registo_como_jogar.js" type="module"></script>
 </body>
