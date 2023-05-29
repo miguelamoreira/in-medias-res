@@ -24,10 +24,10 @@ let isUnblocked = true;
 btnActions.forEach(btnAction => {
     btnAction.addEventListener('click', function() {
         if (isUnblocked) {
-            btnAction.innerHTML = 'DESATIVAR';
+            btnAction.innerHTML = 'ATIVAR';
             isUnblocked = false; 
         } else {
-            btnAction.innerHTML = 'ATIVAR';
+            btnAction.innerHTML = 'DESATIVAR';
             isUnblocked = true; 
         }
     });
