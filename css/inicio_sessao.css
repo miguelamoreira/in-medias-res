@@ -71,7 +71,7 @@ body {
 }
 
 .img:hover {
-    content: url('../assets/seta_depois.png');
+    content: url('../assets/botoes/seta_depois.png');
 }
 
 .card {
@@ -110,7 +110,7 @@ a, a:hover, a:active {
     color:rgba(255, 237, 199, 1);
 }
 
-input[type='password'] {
+input {
     width: 20em;
     height: 3em;
     background-color: rgba(255, 237, 199, 1);
@@ -185,7 +185,7 @@ input[type='password'] {
         font-size: 1.6em;
     }
 
-    input[type='password'] {
+    input {
         width: 25em;
     }
 }

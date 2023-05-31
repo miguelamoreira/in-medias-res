@@ -75,7 +75,7 @@ body {
 }
 
 .img:hover {
-    content: url('../assets/seta_depois.png');
+    content: url('../assets/botoes/seta_depois.png');
 }
 
 .card {
@@ -95,6 +95,11 @@ h1 {
     font-size: 5em;
     line-height: 0;
     letter-spacing: 0.11em;
+}
+
+#imgStitch, #imgMoana, #imgRemy, #imgMickey, #imgPooh, #imgBoo{
+    border: none;
+    background-color: transparent;
 }
 
 .img-fluid {

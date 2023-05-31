@@ -75,7 +75,7 @@ body {
 }
 
 .img:hover {
-    content: url('../assets/seta_depois.png');
+    content: url('../assets/botoes/seta_depois.png');
 }
 
 .card {
