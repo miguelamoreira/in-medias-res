@@ -1,5 +1,3 @@
-// código baseado no exemplo BandsApp feito em aula
-
 let users;
 
 export function init() {

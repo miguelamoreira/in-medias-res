@@ -16,3 +16,9 @@ body {
     }
 }
 
+#btnStart {
+    background-color: transparent;
+    border: none;
+    overflow: hidden;
+    outline: none;
+}

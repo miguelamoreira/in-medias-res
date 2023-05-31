@@ -16,3 +16,7 @@ function initdata() {
         localStorage.setItem("users", JSON.stringify(users));
       }
 }
+
+document.querySelector("#btnStart").addEventListener("click", () => {
+  location.href = "./html/menu.html";
+})
