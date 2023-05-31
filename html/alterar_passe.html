@@ -20,25 +20,27 @@
                     <div class="card-content position-relative">
                         <h1 class="text-center">PALAVRA-PASSE</h1>
                         <div class="d-flex flex-column align-items-center p-xl-5 pass-fields">
-                            <div class="d-flex flex-column mt-5 mb-xl-3">
-                                <label for="oldPass">palavra-passe antiga:</label>
-                                <input type="password" name="oldPass" id="oldPass">
-                            </div>
-                            <div class="d-flex flex-column mb-xl-3">
-                                <label for="newPass">palavra-passe nova:</label>
-                                <input type="password" name="newPass" id="newPass">
-                            </div>
-                            <div class="d-flex flex-column">
-                                <label for="confirmPass">confirmar palavra-passe:</label>
-                                <input type="password" name="confirmPass" id="confirmPass">
-                            </div>
+                            <form id="formPass" method="post">
+                                <div class="d-flex flex-column mt-5 mb-xl-3">
+                                    <label for="oldPass">palavra-passe antiga:</label>
+                                    <input type="password" name="oldPass" id="oldPass">
+                                </div>
+                                <div class="d-flex flex-column mb-xl-3">
+                                    <label for="newPass">palavra-passe nova:</label>
+                                    <input type="password" name="newPass" id="newPass">
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <label for="confirmPass">confirmar palavra-passe:</label>
+                                    <input type="password" name="confirmPass" id="confirmPass">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 order-lg-2 mt-5 align-items-center d-flex justify-content-center">
                 <div class="d-flex flex-column align-items-center mt-5">
-                    <button id="btnSave" class="position-relative">
+                    <button id="btnSave" class="position-relative" type="submit" form="formPass">
                         <img src="../assets/botoes/button.png" class="img-fluid">
                         <span class="position-absolute top-0 start-50 translate-middle-x mt-5">GUARDAR</span>
                     </button>
