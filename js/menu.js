@@ -1,5 +1,11 @@
+import {isLogged} from "./model/user_model.js"
+
 document.querySelector("#btnLogin").addEventListener("click", () => {
+  if (isLogged()) {
+    location.href = "perfil_aluno.html";
+  } else {
     location.href = "inicio_sessao.html";
+  }
   })
   
   document.querySelector("#btnTutorial").addEventListener("click", () => {
@@ -11,6 +17,6 @@ document.querySelector("#btnLogin").addEventListener("click", () => {
   })
   
   document.querySelector("#btnPlay").addEventListener("click", () => {
-    location.href = "salas.html";
+    location.href = "jogar_1.html";
   })
   
