@@ -4,12 +4,24 @@ function initdata() {
     if (!localStorage.users) {
         const users = [
           {
-            username: "user1",
+            username: "joca",
+            email: "joca@imr.com",
             password: "pass1",
+            image: "../assets/avatares/Stitch.png",
+            time: "05:00",
+            pins: 0,
+            status: "Ativo",
+            type: "Aluno"
           },
           {
-            username: "user2",
+            username: "joaozinho",
+            email: "joaozinho@imr.com",
             password: "pass2",
+            image: "../assets/avatares/Stitch.png",
+            time: "00:00",
+            pins: 0,
+            status: "Ativo",
+            type: "Professor"
           },
         ];
         console.log("inject");

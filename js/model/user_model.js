@@ -14,14 +14,14 @@ export function add(username, email, password, password2) {
     } else if (password != password2) {
         throw Error ('As palavras-passe não correspondem!')
     } else {
-        users.push(new User(username, password));
+        users.push(new user(username, email, password, "../assets/avatares/Stitch.png", "00:00", 0, "Ativo", "Aluno"));
         localStorage.setItem("users", JSON.stringify(users));
     }
 }
 
-export function login(username, password) {
+export function login(email, password) {
     const user = users.find(
-      (user) => user.username === username && user.password === password);
+      (user) => user.email === email && user.password === password);
     if (user) {
       sessionStorage.setItem("loggedUser", JSON.stringify(user));
       return true;
@@ -59,7 +59,7 @@ class user {
         this.image = image;
         this.time = time;
         this.pin = pin;
-        this.status = status;
+        this.status = status; 
         this.type = type;
     }
 }
