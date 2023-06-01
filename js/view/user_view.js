@@ -56,6 +56,12 @@ function userView() {
         }
         });
     });
+
+    if (isLogged()) {
+        document.querySelector('#txtLogin').innerHTML = 'PERFIL'
+    } else {
+        document.querySelector('#txtLogin').innerHTML = 'LOGIN'
+    }
 }
 
 userView();
