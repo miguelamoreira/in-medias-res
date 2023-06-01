@@ -62,11 +62,15 @@ body {
 	animation: animateCloud 30s linear infinite;
 }
 
-#btnReturn, #btnScroll {
+#btnLogOut, #btnScroll {
     background-color: transparent;
     border: none;
     overflow: hidden;
     outline: none;
+}
+
+.navbar {
+    height: 5em;
 }
 
 .img {
@@ -74,8 +78,11 @@ body {
     height: 5em;
 }
 
+.img:hover {
+    content: url('../assets/botoes/logout_depois.png');
+}
+
 .card {
-    margin-top: 50px;
     background-color: transparent;
     width: 33.5em;
 }
