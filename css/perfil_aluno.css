@@ -74,10 +74,6 @@ body {
     height: 5em;
 }
 
-.img:hover {
-    content: url('../assets/botoes/seta_depois.png');
-}
-
 .card {
     background-color: transparent;
     width: 33.5em;

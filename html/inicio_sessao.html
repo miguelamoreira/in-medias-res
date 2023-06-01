@@ -11,7 +11,7 @@
 <body>
     <div class="container-fluid">
         <nav class="navbar">
-            <button id="btnReturn"><img src="../assets/botoes/seta_antes.png" class="img float-start mb-1"></button>
+            
         </nav>
         <div class="row">
             <div class="col-lg-6 offset-lg-1 order-lg-1 d-flex">
@@ -23,11 +23,11 @@
                             <form id="formLogin">
                                 <div class="d-flex flex-column mt-2 mb-xl-3 text-center">
                                     <label for="loginEmail">email:</label>
-                                    <input type="email" name="loginEmail" id="loginEmail">
+                                    <input type="email" name="loginEmail" id="loginEmail" required>
                                 </div>
                                 <div class="d-flex flex-column mb-xl-3 text-center">
                                     <label for="loginPass">palavra-passe:</label>
-                                    <input type="password" name="loginPass" id="loginPass">
+                                    <input type="password" name="loginPass" id="loginPass" required>
                                 </div>
                             </form>
                         </div>
@@ -58,6 +58,5 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="../js/view/user_view.js"></script>
-    <script src="../js/inicio_sessao.js" type="module"></script>
 </body>
 </html>
