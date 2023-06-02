@@ -5,24 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/jogar.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-rwdImageMaps/1.6/jquery.rwdImageMaps.min.js" integrity="sha512-eZB7hQa0bRlrKMQ2njpP0d/Klu6o30Gsr8e5FUCjUT3fSlnVkm/1J14n58BuwgaMuObrGb7SvUfQuF8qFsPU4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Jogar</title>
 </head>
 <body>
-    <img src="../assets/salas/sala1-completa.png" usemap="#map-room-1" class="img-fluid img-responsive rounded mx-auto d-block">
-
-    <map name="map-room-1">
-        <area target="" alt="" title="" href="" coords="90,164,107,454,570,429,565,154" shape="poly">
-        <area target="" alt="" title="" href="" coords="1140,147,1389,168,1381,469,1133,408" shape="poly">
-        <area target="" alt="" title="" href="" coords="1214,829,1337,812,1209,751,1228,726,1247,709,1265,697,1291,693,1306,693,1355,710,1491,766,1518,793,1527,821,1532,853,1521,888,1538,890,1532,1027,1377,1061,1213,966" shape="poly">
-        <area target="" alt="" title="" href="" coords="1174,534,1225,522,1245,639,1192,649,1172,532" shape="poly">
-        <area target="" alt="" title="" href="" coords="753,176,1040,171,1036,799,767,834" shape="poly">
-        <area target="" alt="" title="" href="" coords="134,652,151,655,175,657,195,654,217,647,214,635,207,626,220,630,234,623,241,611,237,594,229,584,212,582,195,591,190,606,195,621,185,616,175,616,158,621,161,608,159,598,149,589,134,587,124,589,112,596,109,610,117,626,129,633,137,633,148,632,141,642" shape="poly">
-        <area target="" alt="" title="" href="" coords="351,584,334,589,322,596,319,613,324,628,332,637,346,638,361,638,370,630,377,620,377,606,371,593,361,586" shape="poly">
-        <area target="" alt="" title="" href="" coords="453,622,461,626,475,629,497,631,526,631,550,626,560,617,551,607,539,605,516,602,517,590,548,570,546,531,516,500,499,492,499,482,509,476,511,461,505,448,483,448,466,436,427,437,422,466,429,497,439,509,463,498,478,488,488,495,485,524,512,548,492,558,482,565,477,575,483,583,502,597,495,604,477,607,458,612" shape="poly">
-    </map>
-
+    <div class="container">
+        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar" style="width: 0%"></div>
+        </div>
+        <div class="row">
+            <div class="d-flex flex-row options-room">
+                <button id="salaSair">
+                    <img src="../assets/salas/botao_sair.png">
+                    <span id="txtContador">00:00</span>
+                </button>
+                <button id="salaArmazem"><img src="../assets/salas/botao_armazem.png" class="img-fluid"></button>
+                <button id="salaContador"><img src="../assets/salas/contador.png" class="img-fluid"></button>
+            </div>
+            <img src="../assets/salas/sala1-completa.png" usemap="#map-room-1" class="img-fluid img-responsive rounded mx-auto d-block">
+            <map name="map-room-1">
+                <area target="" alt="" title="" href="" coords="90,164,107,454,570,429,565,154" shape="poly">
+                <area target="" alt="" title="" href="" coords="1140,147,1389,168,1381,469,1133,408" shape="poly">
+                <area target="" alt="" title="" href="" coords="1214,829,1337,812,1209,751,1228,726,1247,709,1265,697,1291,693,1306,693,1355,710,1491,766,1518,793,1527,821,1532,853,1521,888,1538,890,1532,1027,1377,1061,1213,966" shape="poly">
+                <area target="" alt="" title="" href="" coords="1174,534,1225,522,1245,639,1192,649,1172,532" shape="poly">
+                <area target="" alt="" title="" href="" coords="753,176,1040,171,1036,799,767,834" shape="poly">
+                <area target="" alt="" title="" href="" coords="134,652,151,655,175,657,195,654,217,647,214,635,207,626,220,630,234,623,241,611,237,594,229,584,212,582,195,591,190,606,195,621,185,616,175,616,158,621,161,608,159,598,149,589,134,587,124,589,112,596,109,610,117,626,129,633,137,633,148,632,141,642" shape="poly">
+                <area target="" alt="" title="" href="" coords="351,584,334,589,322,596,319,613,324,628,332,637,346,638,361,638,370,630,377,620,377,606,371,593,361,586" shape="poly">
+                <area target="" alt="" title="" href="" coords="453,622,461,626,475,629,497,631,526,631,550,626,560,617,551,607,539,605,516,602,517,590,548,570,546,531,516,500,499,492,499,482,509,476,511,461,505,448,483,448,466,436,427,437,422,466,429,497,439,509,463,498,478,488,488,495,485,524,512,548,492,558,482,565,477,575,483,583,502,597,495,604,477,607,458,612" shape="poly">
+            </map>
+        </div>
+    </div>
     <script src="../js/view/rooms_view.js" type="module"></script>
 </body>
 </html>
