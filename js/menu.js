@@ -1,10 +1,10 @@
 import {isLogged} from "./model/user_model.js"
 
-const btnPerfil = document.getElementById('txtLogin');
-
 if (isLogged()) {
-  btnPerfil.innerHTML = 'PERFIL';
-} 
+  document.querySelector('#txtLogin').innerHTML = 'PERFIL';
+} else {
+  document.querySelector('#txtLogin').innerHTML = 'LOGIN';
+}
 
 document.querySelector("#btnLogin").addEventListener("click", () => {
   if (isLogged()) {

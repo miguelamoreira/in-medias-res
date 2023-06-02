@@ -61,10 +61,7 @@ function userView() {
         const userInfo = User.getUserLogged();
         document.querySelector('#perfilUser').innerHTML = userInfo.username;
         document.querySelector('#perfilTempo').innerHTML = userInfo.time;
-        document.querySelector('#perfilPins').innerHTML = userInfo.pin;
-        document.querySelector('#txtLogin').innerHTML = 'PERFIL'
-    } else {
-        document.querySelector('#txtLogin').innerHTML = 'LOGIN'
+        document.querySelector('#perfilPins').innerHTML = userInfo.pins;
     }
     
 }
