@@ -21,11 +21,13 @@ export class Challenge {
 export class multipleChoiceChallenge extends Challenge {
   answers = [];
   correctAnswer = 0;
+  image = '';
 
-  constructor(id, title, question, answers, correctAnswer) {
+  constructor(id, title, question, answers, correctAnswer, image) {
     super(id, 'multipleChoice', title, question);
     this.answers = answers;
-    this.correctAnswer = correctAnswer
+    this.correctAnswer = correctAnswer;
+    this.image = image;
   };
 };
 
@@ -46,3 +48,14 @@ export class multipleDirectAnswerChallenge extends Challenge {
     this.answers = answers;
   }
 }
+
+export class trueOrFalseChallenge extends Challenge {
+  answers = [];
+  correctAnswer = 0;
+
+  constructor(id, title, question, answers, correctAnswer) {
+    super(id, 'trueOrFalse', title, question);
+    this.answers = answers;
+    this.correctAnswer = correctAnswer
+  };
+};

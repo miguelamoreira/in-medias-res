@@ -1,4 +1,4 @@
-import {isLogged} from "./model/user_model.js"
+import {isLogged, getUserLogged} from "./model/user_model.js"
 
 if (isLogged()) {
   document.querySelector('#txtLogin').innerHTML = 'PERFIL';
@@ -9,7 +9,12 @@ if (isLogged()) {
 document.querySelector("#btnLogin").addEventListener("click", () => {
   if (isLogged()) {
     const btnPerfil = document.getElementById('txtLogin');
-    location.href = "perfil_aluno.html";
+    const userInfo = getUserLogged();
+    if (userInfo.type === 'Aluno') {
+      location.href = "perfil_aluno.html";
+    } else if (userInfo.type === 'Professor') {
+      location.href = "perfil_professor.html";
+    }
   } else {
     location.href = "inicio_sessao.html";
   }

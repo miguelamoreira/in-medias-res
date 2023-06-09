@@ -15,10 +15,17 @@ export function challengesView() {
         'Criação da Disney', 
         'Quem foi um dos criadores da Disney?', 
         ['George Lucas', 'Walt Disney', 'Steve Jobs', 'Ub Iwerks'], 
-        1
+        1,
+        '../assets/img_modal/disneyland.png'
     );
 
-    // id = 3 sopa de letras
+    const challengeBall = new Challenge.trueOrFalseChallenge(
+        3,
+        'Debaixo do mar',
+        'Em Finding Nemo, o peixe que desaparece chama-se Marlin',
+        ['Verdadeiro', 'Falso'],
+        1
+    );
     
     const challengeDraw = new Challenge.directAnswerChallenge(
         4,
@@ -34,7 +41,13 @@ export function challengesView() {
         ['The Incredibles', 'Alladin', 'Big Hero 6']
     );
 
-    // id 6 sopa de letras
+    const challengeCastle = new Challenge.trueOrFalseChallenge(
+        6,
+        'Live Actions',
+        'Nos últimos anos, a Disney tem-se dedicado a criar versões realistas das suas narrativas animadas mais famosas. A narrativa mais recente a ser recriada é a The Little Mermaid.',
+        ['Verdadeiro', 'Falso'],
+        0
+    );
 
     const challengeBalloon = new Challenge.directAnswerChallenge(
         7,
@@ -46,26 +59,30 @@ export function challengesView() {
     const challengeCar = new Challenge.multipleChoiceChallenge(
         8,
         'Personagens favoritas do público',
-        'Qual é o nome desta personagem?'
+        'Qual é o nome desta personagem?',
         ['Wall-E', 'Kuzco', 'Stitch', 'Woody'],
-        2
+        2,
+        '../assets/img_modal/stitch2.png'
     )
 
-    // Check the correct answers
     const userAnswers = {
         1: 'Disneyland',
-        2: 1, // Index of the correct answer
+        2: 1, 
+        3: 1, 
         4: 'Toy Story',
         5: ['The Incredibles', 'Alladin', 'Big Hero 6'],
+        6: 0,
         7: 'Up',
-        8: 2, // Index of the correct answer
+        8: 2, 
     };
 
     const challenges = [
         challengePosterDisney,
         challengeArc,
+        challengeBall,
         challengeDraw,
         challengePosterIncredibles,
+        challengeCastle,
         challengeBalloon,
         challengeCar,
     ];
@@ -84,7 +101,6 @@ export function challengesView() {
     return challenges
 }
 
-// Helper function to check if two arrays contain the same elements
 function arraysContainSameElements(arr1, arr2) {
     if (arr1.length !== arr2.length) {
         return false;

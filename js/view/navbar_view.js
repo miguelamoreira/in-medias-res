@@ -11,8 +11,8 @@ function navbarView() {
     const btnLogOut = document.getElementById('btnLogOut');
     btnLogOut.addEventListener('click', function() {
         User.logout();
-        if (location.href.includes('perfil_aluno.html')) {
-            location.href = 'inicio_sessao.html';
+        if (location.href.includes('perfil_aluno.html') || location.href.includes('perfil_professor.html')) {
+            location.href = 'menu.html';
         } else {
             location.reload();
         }
