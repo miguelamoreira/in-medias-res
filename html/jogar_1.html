@@ -26,15 +26,32 @@
             </div>
             <img src="../assets/salas/sala1-completa.png" usemap="#map-room-1" class="img-fluid img-responsive rounded mx-auto d-block">
             <map name="map-room-1">
-                <area alt="" title="" href="" coords="90,164,107,454,570,429,565,154" shape="poly" id="posterPixar">
-                <area alt="" title="" href="" coords="1140,147,1389,168,1381,469,1133,408" shape="poly" id="posterDisney">
-                <area alt="" title="" href="" coords="1214,829,1337,812,1209,751,1228,726,1247,709,1265,697,1291,693,1306,693,1355,710,1491,766,1518,793,1527,821,1532,853,1521,888,1538,890,1532,1027,1377,1061,1213,966" shape="poly" id="bau">
-                <area alt="" title="" href="" coords="1174,534,1225,522,1245,639,1192,649,1172,532" shape="poly" id="desenho">
-                <area alt="" title="" href="" coords="753,176,1040,171,1036,799,767,834" shape="poly" id="porta">
+                <area alt="" title="" href="" coords="90,164,107,454,570,429,565,154" shape="poly" id="posterPixar" data-bs-toggle="modal" data-bs-target="#variableModal">
+                <area alt="" title="" href="" coords="1140,147,1389,168,1381,469,1133,408" shape="poly" id="posterDisney" data-bs-toggle="modal" data-bs-target="#variableModal">
+                <area alt="" title="" href="" coords="1214,829,1337,812,1209,751,1228,726,1247,709,1265,697,1291,693,1306,693,1355,710,1491,766,1518,793,1527,821,1532,853,1521,888,1538,890,1532,1027,1377,1061,1213,966" shape="poly" id="bau" data-bs-toggle="modal" data-bs-target="#variableModal">
+                <area alt="" title="" href="" coords="1174,534,1225,522,1245,639,1192,649,1172,532" shape="poly" id="desenho" data-bs-toggle="modal" data-bs-target="#variableModal">
+                <area alt="" title="" href="" coords="753,176,1040,171,1036,799,767,834" shape="poly" id="porta" data-bs-toggle="modal" data-bs-target="#variableModal">
                 <area alt="" title="" href="" coords="134,652,151,655,175,657,195,654,217,647,214,635,207,626,220,630,234,623,241,611,237,594,229,584,212,582,195,591,190,606,195,621,185,616,175,616,158,621,161,608,159,598,149,589,134,587,124,589,112,596,109,610,117,626,129,633,137,633,148,632,141,642" shape="poly" id="orelhas" data-bs-toggle="modal" data-bs-target="#orelhasModal">
-                <area alt="" title="" href="" coords="351,584,334,589,322,596,319,613,324,628,332,637,346,638,361,638,370,630,377,620,377,606,371,593,361,586" shape="poly" id="bola">
+                <area alt="" title="" href="" coords="351,584,334,589,322,596,319,613,324,628,332,637,346,638,361,638,370,630,377,620,377,606,371,593,361,586" shape="poly" id="bola" data-bs-toggle="modal" data-bs-target="#variableModal">
                 <area alt="" title="" href="" coords="453,622,461,626,475,629,497,631,526,631,550,626,560,617,551,607,539,605,516,602,517,590,548,570,546,531,516,500,499,492,499,482,509,476,511,461,505,448,483,448,466,436,427,437,422,466,429,497,439,509,463,498,478,488,488,495,485,524,512,548,492,558,482,565,477,575,483,583,502,597,495,604,477,607,458,612" shape="poly" id="candeeiro" data-bs-toggle="modal" data-bs-target="#candeeiroModal">
             </map>
+        </div>
+
+        <div class="modal fade hide" id="rInicio">
+          <div class="modal-dialog modal-md">
+            <div class="modal-content rounded-4">
+              <div class="modal-header">
+                <h4 class="modal-title">Pins perdidos</h4>
+              </div>
+              <div class="modal-body text-center">
+                <p>Olá! A minha fita de escuteiro estragou-se e perdi alguns dos meus pins. Será que me podias ajudar a encontrá-los? </p>
+                <img src="../assets/img_modal/russell1.png" class="img-fluid mt-3">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="modal fade" id="orelhasModal">
@@ -74,6 +91,14 @@
               <div class="modal-footer">
                 <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="variableModal" tabindex="-1" aria-labelledby="variableModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-md">
+            <div class="modal-content rounded-4">
+
             </div>
           </div>
         </div>

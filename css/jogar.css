@@ -1,5 +1,79 @@
 @import url('https://fonts.cdnfonts.com/css/futura-pt');
 
+* {
+    font-family: 'Futura PT', sans-serif;
+    font-style: normal;
+}
+
+p {
+    font-size: 1.1em;
+}
+
+.modal-title {
+    font-weight: 700;
+}
+
+.modal-content {
+    background-color: #F6F6F6;
+    font-weight: 500;
+    line-height: 33px;
+}
+
+.btnClose, .btnSubmit {
+    color: #FFEDC7;
+    background-color: #769ED2;
+    font-weight: 500;
+}
+
+.btnClose:hover, .btnSubmit:hover {
+    background-color: #437CBB;
+    color: #FFEDC7;
+    font-weight: 500;
+}
+
+li {
+    text-align: left;
+    font-weight: 500;
+}
+
+
+.code-digit, .code-digits {
+    position: relative;
+    width: 1em;
+    height: 1em;
+    border-bottom: solid;
+}
+
+#digit-one::before, .code-digits::before, #digit-two::before {
+    content: "1"; 
+    position: absolute;
+    top: -1em;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.text-answers {
+    width: 15em;
+    background: #F6F6F6;
+    border: 1px solid #769ED2;
+    border-radius: 0.5em;
+    font-family: 'Futura-Medium', sans-serif;
+    font-size: 1em;
+    height: 2.5em;
+}
+
+label {
+    font-size: 1.1em;
+}
+
+.tick-lines {
+    background-color: #F6F6F6;
+    width: 2em;
+    position: relative;
+    bottom: 1em;
+}
+
 html, body {
     height: 100%;
     width: 100%;

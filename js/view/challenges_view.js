@@ -1,6 +1,6 @@
 import * as Challenge from "../model/challenge_model.js";
 
-function challengesView() {
+export function challengesView() {
     Challenge.init(); 
 
     const challengePosterDisney = new Challenge.directAnswerChallenge(
@@ -51,6 +51,47 @@ function challengesView() {
         2
     )
 
+    // Check the correct answers
+    const userAnswers = {
+        1: 'Disneyland',
+        2: 1, // Index of the correct answer
+        4: 'Toy Story',
+        5: ['The Incredibles', 'Alladin', 'Big Hero 6'],
+        7: 'Up',
+        8: 2, // Index of the correct answer
+    };
+
+    const challenges = [
+        challengePosterDisney,
+        challengeArc,
+        challengeDraw,
+        challengePosterIncredibles,
+        challengeBalloon,
+        challengeCar,
+    ];
+
+    challenges.forEach(challenge => {
+        const userAnswer = userAnswers[challenge.id];
+        if (Array.isArray(userAnswer)) {
+            const isAnswerCorrect = arraysContainSameElements(userAnswer, challenge.answers);
+            challenge.answeredCorrectly = isAnswerCorrect;
+        } else {
+        challenge.answeredCorrectly = (userAnswer === challenge.answer || userAnswer === challenge.correctAnswer);
+        }
+    });
+
+    console.log(challenges);
+    return challenges
+}
+
+// Helper function to check if two arrays contain the same elements
+function arraysContainSameElements(arr1, arr2) {
+    if (arr1.length !== arr2.length) {
+        return false;
+    }
+    const sortedArr1 = arr1.slice().sort();
+    const sortedArr2 = arr2.slice().sort();
+    return sortedArr1.every((element, index) => element === sortedArr2[index]);
 }
 
 challengesView();

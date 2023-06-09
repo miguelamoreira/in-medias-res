@@ -4,7 +4,7 @@ export function init() {
     challenges = localStorage.challenges ? JSON.parse(localStorage.challenges) : [];
 }
 
-class challenge {
+export class Challenge {
     id = 0;
     type = '';
     title = '';
@@ -18,7 +18,7 @@ class challenge {
     };
 };
 
-class multipleChoiceChallenge extends challenge {
+export class multipleChoiceChallenge extends Challenge {
   answers = [];
   correctAnswer = 0;
 
@@ -29,7 +29,7 @@ class multipleChoiceChallenge extends challenge {
   };
 };
 
-class directAnswerChallenge extends challenge {
+export class directAnswerChallenge extends Challenge {
   answer = '';
 
   constructor(id, title, question, answer) {
@@ -38,7 +38,7 @@ class directAnswerChallenge extends challenge {
   }
 }
 
-class multipleDirectAnswerChallenge extends challenge {
+export class multipleDirectAnswerChallenge extends Challenge {
   answers = [];
 
   constructor(id, title, question, answers) {
