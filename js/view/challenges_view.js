@@ -1,4 +1,5 @@
 import * as Challenge from "../model/challenge_model.js";
+import { getUserLogged } from "../model/user_model.js";
 
 export function challengesView() {
     Challenge.init(); 
@@ -89,7 +90,10 @@ function arraysContainSameElements(arr1, arr2) {
 }
 
 export function answerIsCorrect(userAnswer, challenge) {
-    if (userAnswer === challenge.answer || userAnswer === challenge.correctAnswer || userAnswer === challenge.answers) {
+    if (userAnswer === challenge.correctAnswer || userAnswer === challenge.answers || userAnswer.toLowerCase() === challenge.answer.toLowerCase()) {
+        let userInfo = getUserLogged();
+        userInfo.challenges += 1;
+        sessionStorage.setItem('loggedUser', JSON.stringify(userInfo));
         return true
     } else {
         return false

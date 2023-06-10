@@ -11,7 +11,8 @@ function initdata() {
             time: "05:00",
             pins: 0,
             status: "Ativo",
-            type: "Aluno"
+            type: "Aluno",
+            challenges: 0,
           },
           {
             username: "joaozinho",
@@ -21,7 +22,8 @@ function initdata() {
             time: "00:00",
             pins: 0,
             status: "Ativo",
-            type: "Professor"
+            type: "Professor",
+            challenges: 0,
           },
         ];
         console.log("inject");

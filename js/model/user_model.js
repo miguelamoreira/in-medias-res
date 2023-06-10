@@ -14,7 +14,7 @@ export function add(username, email, password, password2) {
     } else if (password != password2) {
         throw Error ('As palavras-passe não correspondem!')
     } else {
-        users.push(new user(username, email, password, "../assets/avatares/Stitch.png", "00:00", 0, "Ativo", "Aluno"));
+        users.push(new user(username, email, password));
         localStorage.setItem("users", JSON.stringify(users));
     }
 }
@@ -51,15 +51,17 @@ class user {
     pins = '';
     status = '';
     type = '';
+    challenges = '';
 
-    constructor(username, email, password, image, time, pin, status, type) {
+    constructor(username, email, password, image = '../assets/avatares.Stitch.png', time = 0, pins = 0, status = 'Ativo', type = 'Aluno', challenges = 0) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.image = image;
         this.time = time;
-        this.pin = pin;
+        this.pins = pins;
         this.status = status; 
         this.type = type;
+        this.challenges = challenges;
     }
 }
