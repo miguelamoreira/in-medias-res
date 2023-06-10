@@ -22,7 +22,7 @@ export function challengesView() {
     const challengeBall = new Challenge.trueOrFalseChallenge(
         3,
         'Debaixo do mar',
-        'Em Finding Nemo, o peixe que desaparece chama-se Marlin',
+        'Em Finding Nemo, o peixe que desaparece chama-se Marlin.',
         ['Verdadeiro', 'Falso'],
         1
     );
@@ -65,17 +65,6 @@ export function challengesView() {
         '../assets/img_modal/stitch2.png'
     )
 
-    const userAnswers = {
-        1: 'Disneyland',
-        2: 1, 
-        3: 1, 
-        4: 'Toy Story',
-        5: ['The Incredibles', 'Alladin', 'Big Hero 6'],
-        6: 0,
-        7: 'Up',
-        8: 2, 
-    };
-
     const challenges = [
         challengePosterDisney,
         challengeArc,
@@ -87,17 +76,6 @@ export function challengesView() {
         challengeCar,
     ];
 
-    challenges.forEach(challenge => {
-        const userAnswer = userAnswers[challenge.id];
-        if (Array.isArray(userAnswer)) {
-            const isAnswerCorrect = arraysContainSameElements(userAnswer, challenge.answers);
-            challenge.answeredCorrectly = isAnswerCorrect;
-        } else {
-        challenge.answeredCorrectly = (userAnswer === challenge.answer || userAnswer === challenge.correctAnswer);
-        }
-    });
-
-    console.log(challenges);
     return challenges
 }
 
@@ -110,4 +88,12 @@ function arraysContainSameElements(arr1, arr2) {
     return sortedArr1.every((element, index) => element === sortedArr2[index]);
 }
 
-challengesView();
+export function answerIsCorrect(userAnswer, challenge) {
+    if (userAnswer === challenge.answer || userAnswer === challenge.correctAnswer || userAnswer === challenge.answers) {
+        return true
+    } else {
+        return false
+    }
+}
+
+const challenges = challengesView();
