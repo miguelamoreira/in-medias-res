@@ -31,22 +31,26 @@ document.querySelector("#btnLeaderboard").addEventListener("click", () => {
 document.querySelector("#btnPlay").addEventListener("click", () => {
   if (isLogged()) {
     const userInfo = getUserLogged();
-    if (userInfo.challenges.length < 4 || userInfo.challenges.length === 8) {
-      userInfo.pins = 0;
-      userInfo.challenges = []
-
-      let users = getUsers()
-      let userIndex = users.findIndex(user => user.username === userInfo.username)
-      users[userIndex] = userInfo
-      localStorage.setItem('users', JSON.stringify(users))
-      sessionStorage.setItem('loggedUser', JSON.stringify(userInfo))
-
-      location.href = "jogar_1.html";
+    if (userInfo.status == 'Ativo') {
+      if (userInfo.challenges.length < 4 || userInfo.challenges.length === 8) {
+        userInfo.pins = 0;
+        userInfo.challenges = []
+  
+        let users = getUsers()
+        let userIndex = users.findIndex(user => user.username === userInfo.username)
+        users[userIndex] = userInfo
+        localStorage.setItem('users', JSON.stringify(users))
+        sessionStorage.setItem('loggedUser', JSON.stringify(userInfo))
+  
+        location.href = "jogar_1.html";
+      } else {
+        location.href = "jogar_2.html";
+      }
     } else {
-      location.href = "jogar_2.html";
+      alert('Estás bloqueado. Contacta o teu professor para conseguires jogar.')
     }
   } else {
-    alert('Precisa de estar autenticado para poder jogar!');
+    alert('Precisas de estar autenticado para poder jogar!');
   }
 })
   
