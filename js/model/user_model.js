@@ -42,6 +42,19 @@ export function getUserLogged() {
     return JSON.parse(sessionStorage.getItem("loggedUser"));
 }
 
+export function getUsers() {
+    return JSON.parse(localStorage.users)
+}
+
+export const avatares = [
+    'Stitch.png',
+    'Mickey.png',
+    'Moana.png',
+    'Boo.png',
+    'Pooh.png',
+    'Remy.png'
+]
+
 class user {
     username = '';
     email = '';

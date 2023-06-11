@@ -1,4 +1,4 @@
-import {isLogged, getUserLogged} from "./model/user_model.js"
+import {isLogged, getUserLogged, getUsers} from "./model/user_model.js"
 
 if (isLogged()) {
   document.querySelector('#txtLogin').innerHTML = 'PERFIL';
@@ -31,7 +31,16 @@ document.querySelector("#btnLeaderboard").addEventListener("click", () => {
 document.querySelector("#btnPlay").addEventListener("click", () => {
   if (isLogged()) {
     const userInfo = getUserLogged();
-    if (userInfo.challenges.length < 4) {
+    if (userInfo.challenges.length < 4 || userInfo.challenges.length === 8) {
+      userInfo.pins = 0;
+      userInfo.challenges = []
+
+      let users = getUsers()
+      let userIndex = users.findIndex(user => user.username === userInfo.username)
+      users[userIndex] = userInfo
+      localStorage.setItem('users', JSON.stringify(users))
+      sessionStorage.setItem('loggedUser', JSON.stringify(userInfo))
+
       location.href = "jogar_1.html";
     } else {
       location.href = "jogar_2.html";

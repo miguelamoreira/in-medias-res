@@ -1,6 +1,5 @@
-import {challengesView} from "./challenges_view.js"
-import {answerIsCorrect} from "./challenges_view.js"
-import { getUserLogged } from "../model/user_model.js"; 
+import {challengesView, answerIsCorrect} from "./challenges_view.js"
+import {getUserLogged, getUsers, avatares} from "../model/user_model.js";
 
 $(document).ready(function(e) {
     $('img[usemap]').rwdImageMaps(); 
@@ -56,6 +55,9 @@ if (document.getElementById('bola')) {
 };
 
 // sala 2
+let roomCode = [Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10)]
+let userCode = ['','','','']
+
 if (document.getElementById('castelo')) {
   const castelo = document.getElementById('castelo').addEventListener('click', () => {
     renderModalChallenge(6);
@@ -202,6 +204,9 @@ function renderModalChallenge(id) {
       console.log(userAnswer);
     }
     if (answerIsCorrect(userAnswer, challenge)) {
+      let userInfo = getUserLogged();
+      userInfo.challenges.push(challenge.id)
+      sessionStorage.setItem('loggedUser', JSON.stringify(userInfo));
       renderModalAnswered('correct');
     } else {
       renderModalAnswered('incorrect')
@@ -260,22 +265,84 @@ function renderModalAnswered(answer) {
       <h4 class="modal-title">Desafio completo</h4>
     </div>
     `
-    if (userInfo.challenges.length == 2 || userInfo.challenges.length == 6) {
+    if (location.href.includes('jogar_2.html')) {
+      let digitIndex = userCode.findIndex(digit => digit === '')
+      userCode[digitIndex] = roomCode[digitIndex]
       result += `
       <div class="modal-body text-center">
-        <p>Parabéns! Conseguiste completar o desafio e, como recompensa, desbloqueaste um avatar.<br>Continua a resolver desafios para ganhar mais! </p>
-        <img src="../assets/avatares/Pooh.png" class="img-fluid mt-3">
+        <p>Parabéns! Conseguiste completar o desafio e, como recompensa, desbloqueaste um dos números do código da porta.
+          <br>Continua a resolver desafios para descobrir os restantes números!</p>
+        <div class="code d-flex flex-row justify-content-evenly mt-5">
+          <div class="code-digit">${userCode[0]}</div>
+          <div class="code-digit">${userCode[1]}</div>
+          <div class="code-digit">${userCode[2]}</div>
+          <div class="code-digit">${userCode[3]}</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btnDismiss" class="btn btnClose border-0">Fechar</button>
       </div>
       `
+      document.querySelector('#variableModal .modal-content').innerHTML = result
+      $('#variableModal').modal('show'); 
+
+      document.querySelector('#btnDismiss').addEventListener('click', () => {
+        result = `
+        <div class="modal-header">
+          <h4 class="modal-title">Desafio completo</h4>
+        </div>
+        `
+        if (userInfo.challenges.length == 6) {
+          result += `
+          <div class="modal-body text-center">
+            <p>Parabéns! Conseguiste completar o desafio e, como recompensa, desbloqueaste um avatar.<br>Continua a resolver desafios para ganhar mais! </p>
+            <img src="../assets/avatares/${avatares[3]}" class="img-fluid mt-3">
+          </div>
+          `
+        } else {
+          result += `
+          <div class="modal-body text-center">
+            <p>Parabéns! Conseguiste completar o desafio e, como recompensa, desbloqueaste um pin.<br>Continua a resolver desafios para ganhar mais! </p>
+            <img src="../assets/img_modal/pin.png" class="img-fluid mt-3">
+          </div>
+          `
+          userInfo.pins += 1;
+          sessionStorage.setItem('loggedUser', JSON.stringify(userInfo));
+        }
+        result += `
+        <div class="modal-footer">
+          <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
+        </div>
+        `
+        document.querySelector('#variableModal .modal-content').innerHTML = result
+        $('#variableModal').modal('show'); 
+      })
+
     } else {
+      if (userInfo.challenges.length == 2) {
+        result += `
+        <div class="modal-body text-center">
+          <p>Parabéns! Conseguiste completar o desafio e, como recompensa, desbloqueaste um avatar.<br>Continua a resolver desafios para ganhar mais! </p>
+          <img src="../assets/avatares/${avatares[4]}" class="img-fluid mt-3">
+        </div>
+        `
+      } else {
+        result += `
+        <div class="modal-body text-center">
+          <p>Parabéns! Conseguiste completar o desafio e, como recompensa, desbloqueaste um pin.<br>Continua a resolver desafios para ganhar mais! </p>
+          <img src="../assets/img_modal/pin.png" class="img-fluid mt-3">
+        </div>
+        `
+        userInfo.pins += 1;
+        sessionStorage.setItem('loggedUser', JSON.stringify(userInfo));
+      }
       result += `
-      <div class="modal-body text-center">
-        <p>Parabéns! Conseguiste completar o desafio e, como recompensa, desbloqueaste um pin.<br>Continua a resolver desafios para ganhar mais! </p>
-        <img src="../assets/img_modal/pin.png" class="img-fluid mt-3">
+      <div class="modal-footer">
+        <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
       </div>
       `
-      userInfo.pins += 1;
-      sessionStorage.setItem('loggedUser', JSON.stringify(userInfo));
+      document.querySelector('#variableModal .modal-content').innerHTML = result
+      $('#variableModal').modal('show'); 
     }
   } else {
     result += `
@@ -286,15 +353,13 @@ function renderModalAnswered(answer) {
       <p>Infelizmente não era essa a resposta ao desafio.<br>Volta para a sala para poderes tentar novamente. </p>
       <img src="../assets/img_modal/sadness.png" class="img-fluid">
     </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
+    </div>
     `
+    document.querySelector('#variableModal .modal-content').innerHTML = result
+    $('#variableModal').modal('show');
   }
-  result += `
-  <div class="modal-footer">
-    <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
-  </div>
-  `
-  document.querySelector('#variableModal .modal-content').innerHTML = result
-  $('#variableModal').modal('show');
 }
 
 function countdownTimer() {
@@ -393,7 +458,7 @@ function renderDoorModal() {
     </div>
     <div class="modal-body text-center">
       <p>Parabéns! Conseguiste completar a primeira sala e, como recompensa, desbloqueaste um avatar.<br>Continua a resolver desafios para ganhar mais! </p>
-      <img src="../assets/avatares/Remy.png" class="img-fluid mt-3">
+      <img src="../assets/avatares/${avatares[5]}" class="img-fluid mt-3">
     </div>
     `;
   } else if (userInfo.challenges.length > 4 && userInfo.challenges.length < 8) {
@@ -404,10 +469,10 @@ function renderDoorModal() {
     <div class="modal-body text-center">
       <p>Infelizmente a porta está trancada. <br>Resolve os desafios que se encontram espalhados pela sala para descobrires o código secreto.</p>
       <div class="code d-flex flex-row justify-content-evenly mt-5">
-        <div class="code-digit"></div>
-        <div class="code-digit"></div>
-        <div class="code-digit"></div>
-        <div class="code-digit"></div>
+        <div class="code-digit">${userCode[0]}</div>
+        <div class="code-digit">${userCode[1]}</div>
+        <div class="code-digit">${userCode[2]}</div>
+        <div class="code-digit">${userCode[3]}</div>
       </div>
     </div>
     `;
@@ -419,27 +484,69 @@ function renderDoorModal() {
     <div class="modal-body text-center">
       <p>Parabéns! Descobriste o código secreto. <br>Podes finalmente sair do universo animado da Disney e da Pixar! </p>
       <div class="code d-flex flex-row justify-content-evenly mt-5">
-        <div class="code-digits"></div>
-        <div class="code-digits"></div>
-        <div class="code-digits"></div>
-        <div class="code-digits"></div>
+        <div class="code-digits">${roomCode[0]}</div>
+        <div class="code-digits">${roomCode[1]}</div>
+        <div class="code-digits">${roomCode[2]}</div>
+        <div class="code-digits">${roomCode[3]}</div>
       </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" id="btnDismiss" class="btn btnClose border-0">Fechar</button>
     </div>
     `;
   }
-  result += `
-  <div class="modal-footer">
-    <button type="button" id="btnDismiss" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
-  </div>
-  `
+  if (userInfo.challenges.length < 8) {
+    result += `
+    <div class="modal-footer">
+      <button type="button" id="btnDismiss" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
+    </div>
+    `
+  }
 
   document.querySelector('#variableModal .modal-content').innerHTML = result
   $('#variableModal').modal('show');
 
-  if ((userInfo.challenges.length === 4)) {
+  if ((userInfo.challenges.length === 4  || userInfo.challenges.length === 8)) {
     document.querySelector('#btnDismiss').addEventListener('click', () => {
-      location.href = "jogar_2.html";
-      let users = JSON.parse(localStorage.users)
+      if (userInfo.challenges.length === 8) {
+        let result = ''
+        if (userInfo.pins === 8) {
+          result += `
+          <div class="modal-header">
+            <h4 class="modal-title">Pins encontrados</h4>
+          </div>
+          <div class="modal-body text-center">
+            <p>Fantástico! Conseguiste encontrar todos os meus pins. <br>Já posso partir na minha próxima aventura. Obrigado!</p>
+            <img src="../assets/img_modal/russell2.png" class="img-fluid mt-3">
+          </div>
+          `
+        } else {
+          result += `
+          <div class="modal-header">
+            <h4 class="modal-title">Pins perdidos</h4>
+          </div>
+          <div class="modal-body text-center">
+            <p>É pena que não tenhas conseguido encontrar todos os meus pins, mas obrigado na mesma. <br>Vou continuar à procura.</p>
+            <img src="../assets/img_modal/russell1.png" class="img-fluid mt-3">
+          </div>
+          `
+        }
+        result += `
+        <div class="modal-footer">
+          <button type="button" id="btnDismiss" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
+        </div>
+        `
+
+        document.querySelector('#variableModal .modal-content').innerHTML = result
+        $('#variableModal').modal('show');
+
+        document.querySelector('#btnDismiss').addEventListener('click', () => {
+          location.href = "menu.html"
+        })
+      } else {
+        location.href = "jogar_2.html";
+      }
+      let users = getUsers()
       let userIndex = users.findIndex(user => user.username === userInfo.username)
       users[userIndex] = userInfo
       localStorage.setItem('users', JSON.stringify(users))

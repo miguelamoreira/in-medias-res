@@ -80,23 +80,14 @@ export function challengesView() {
     return challenges
 }
 
-function arraysContainSameElements(arr1, arr2) {
-    if (arr1.length !== arr2.length) {
-        return false;
-    }
-    const sortedArr1 = arr1.slice().sort();
-    const sortedArr2 = arr2.slice().sort();
-    return sortedArr1.every((element, index) => element === sortedArr2[index]);
-}
-
 export function answerIsCorrect(userAnswer, challenge) {
-    if (userAnswer === challenge.correctAnswer || userAnswer === challenge.answers || userAnswer.toLowerCase() === challenge.answer.toLowerCase()) {
-        let userInfo = getUserLogged();
-        userInfo.challenges.push(challenge.id)
-        sessionStorage.setItem('loggedUser', JSON.stringify(userInfo));
-        return true
-    } else {
-        return false
+    console.log(challenge.answers);
+    if (challenge.type === 'directAnswer') {
+        return userAnswer.toLowerCase() === challenge.answer.toLowerCase()
+    } else if (challenge.type === 'multipleChoice' || challenge.type === 'trueOrFalse') {
+        return userAnswer === challenge.correctAnswer
+    } else if (challenge.type === 'multipleAnswer') {
+        return userAnswer.toString().toLowerCase() === challenge.answers.toString().toLowerCase();
     }
 }
 
