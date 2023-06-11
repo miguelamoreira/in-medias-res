@@ -7,8 +7,6 @@ $(document).ready(function(e) {
     
 });
 
-let userAnswers = [];
-
 //  sala 1
 $(window).on('load', function() {
   $('#rInicio').modal('show');
@@ -89,8 +87,9 @@ if (document.getElementById('faisca')) {
 };
 
 function renderModalChallenge(id) {
+  let userInfo = getUserLogged();
   let challenge = challengesView().find(challenge => challenge.id == id)
-  if (userAnswers.includes(challenge.id)) {
+  if (userInfo.challenges.includes(challenge.id)) {
     let result = `
     <div class="modal-header">
       <h4 class="modal-title">Desafio completo</h4>
@@ -203,7 +202,6 @@ function renderModalChallenge(id) {
       console.log(userAnswer);
     }
     if (answerIsCorrect(userAnswer, challenge)) {
-      userAnswers.push(challenge.id)
       renderModalAnswered('correct');
     } else {
       renderModalAnswered('incorrect')
@@ -262,7 +260,7 @@ function renderModalAnswered(answer) {
       <h4 class="modal-title">Desafio completo</h4>
     </div>
     `
-    if (userAnswers.length == 2 || userAnswers.length == 6) {
+    if (userInfo.challenges.length == 2 || userInfo.challenges.length == 6) {
       result += `
       <div class="modal-body text-center">
         <p>Parabéns! Conseguiste completar o desafio e, como recompensa, desbloqueaste um avatar.<br>Continua a resolver desafios para ganhar mais! </p>
@@ -341,7 +339,7 @@ function renderModalInfo() {
       </div>
       <div class="d-flex flex-column mt-5 ms-5">
         <p class="ms-5">Sala: 1</p>
-        <p class="ms-5">Desafios: ${userInfo.challenges}/8</p>
+        <p class="ms-5">Desafios: ${userInfo.challenges.length}/8</p>
         <p class="ms-5">Pins: ${userInfo.pins}</p>
       </div> 
     </div>
@@ -361,7 +359,7 @@ function renderModalInfo() {
       </div>
       <div class="d-flex flex-column mt-5 ms-5">
         <p class="ms-5">Sala: 2</p>
-        <p class="ms-5">Desafios: ${userInfo.challenges}/8</p>
+        <p class="ms-5">Desafios: ${userInfo.challenges.length}/8</p>
         <p class="ms-5">Pins: ${userInfo.pins}</p>
       </div> 
     </div>
@@ -378,7 +376,7 @@ function renderModalInfo() {
 function renderDoorModal() {
   let userInfo = getUserLogged();
   let result = '';
-  if (userInfo.challenges < 4) {
+  if (userInfo.challenges.length < 4) {
     result = `
     <div class="modal-header">
       <h4 class="modal-title">Porta trancada</h4>
@@ -387,11 +385,8 @@ function renderDoorModal() {
       <p>Infelizmente a porta está trancada.<br>Resolve os desafios corretamente para conseguires abrir a porta!</p>
       <img src="../assets/img_modal/sadness.png" class="img-fluid">
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
-    </div>
     `;
-  } else if (userInfo.challenges === 4) {
+  } else if (userInfo.challenges.length === 4) {
     result = `
     <div class="modal-header">
       <h4 class="modal-title">Porta destrancada</h4>
@@ -400,11 +395,8 @@ function renderDoorModal() {
       <p>Parabéns! Conseguiste completar a primeira sala e, como recompensa, desbloqueaste um avatar.<br>Continua a resolver desafios para ganhar mais! </p>
       <img src="../assets/avatares/Remy.png" class="img-fluid mt-3">
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
-    </div>
     `;
-  } else if (userInfo.challenges > 4 && userInfo.challenges < 8) {
+  } else if (userInfo.challenges.length > 4 && userInfo.challenges.length < 8) {
     result = `
     <div class="modal-header">
       <h4 class="modal-title">Porta trancada</h4>
@@ -418,11 +410,8 @@ function renderDoorModal() {
         <div class="code-digit"></div>
       </div>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
-    </div>
     `;
-  } else if (userInfo.challenges === 8) {
+  } else if (userInfo.challenges.length === 8) {
     result = `
     <div class="modal-header">
       <h4 class="modal-title">Porta destrancada</h4>
@@ -436,12 +425,24 @@ function renderDoorModal() {
         <div class="code-digits"></div>
       </div>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
-    </div>
     `;
   }
+  result += `
+  <div class="modal-footer">
+    <button type="button" id="btnDismiss" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
+  </div>
+  `
 
   document.querySelector('#variableModal .modal-content').innerHTML = result
   $('#variableModal').modal('show');
+
+  if ((userInfo.challenges.length === 4)) {
+    document.querySelector('#btnDismiss').addEventListener('click', () => {
+      location.href = "jogar_2.html";
+      let users = JSON.parse(localStorage.users)
+      let userIndex = users.findIndex(user => user.username === userInfo.username)
+      users[userIndex] = userInfo
+      localStorage.setItem('users', JSON.stringify(users))
+    })
+  }
 };

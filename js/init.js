@@ -12,7 +12,7 @@ function initdata() {
             pins: 0,
             status: "Ativo",
             type: "Aluno",
-            challenges: 0,
+            challenges: [],
           },
           {
             username: "joaozinho",
@@ -23,7 +23,7 @@ function initdata() {
             pins: 0,
             status: "Ativo",
             type: "Professor",
-            challenges: 0,
+            challenges: [],
           },
         ];
         console.log("inject");

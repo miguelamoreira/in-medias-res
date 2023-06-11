@@ -30,7 +30,12 @@ document.querySelector("#btnLeaderboard").addEventListener("click", () => {
   
 document.querySelector("#btnPlay").addEventListener("click", () => {
   if (isLogged()) {
-    location.href = "jogar_1.html";
+    const userInfo = getUserLogged();
+    if (userInfo.challenges.length < 4) {
+      location.href = "jogar_1.html";
+    } else {
+      location.href = "jogar_2.html";
+    }
   } else {
     alert('Precisa de estar autenticado para poder jogar!');
   }

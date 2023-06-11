@@ -92,7 +92,7 @@ function arraysContainSameElements(arr1, arr2) {
 export function answerIsCorrect(userAnswer, challenge) {
     if (userAnswer === challenge.correctAnswer || userAnswer === challenge.answers || userAnswer.toLowerCase() === challenge.answer.toLowerCase()) {
         let userInfo = getUserLogged();
-        userInfo.challenges += 1;
+        userInfo.challenges.push(challenge.id)
         sessionStorage.setItem('loggedUser', JSON.stringify(userInfo));
         return true
     } else {
@@ -100,4 +100,4 @@ export function answerIsCorrect(userAnswer, challenge) {
     }
 }
 
-const challenges = challengesView();
+challengesView();
