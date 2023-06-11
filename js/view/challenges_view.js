@@ -23,8 +23,8 @@ export function challengesView() {
 
     const challengeBall = new Challenge.trueOrFalseChallenge(
         3,
-        'Debaixo do mar',
-        'Em Finding Nemo, o peixe que desaparece chama-se Marlin.',
+        'Mickey Mouse',
+        'A história da Disney já conta com mais de 100 anos. No entanto, a sua personagem mais icónica, Mickey Mouse, tem apenas 50 anos.',
         ['Verdadeiro', 'Falso'],
         1
     );
@@ -45,8 +45,8 @@ export function challengesView() {
 
     const challengeCastle = new Challenge.trueOrFalseChallenge(
         6,
-        'Live Actions',
-        'Nos últimos anos, a Disney tem-se dedicado a criar versões realistas das suas narrativas animadas mais famosas. A narrativa mais recente a ser recriada é a The Little Mermaid.',
+        'Cinematografia da Disney',
+        'O repertório da Disney é tão extenso e variado que é possível dividi-lo em 8 eras diferentes, todas elas com as suas próprias características',
         ['Verdadeiro', 'Falso'],
         0
     );
