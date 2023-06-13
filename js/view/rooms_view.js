@@ -20,7 +20,7 @@ if (document.getElementById('salaArmazem')) {
 
 if (document.getElementById('posterPixar')) {
   const posterPixar = document.getElementById('posterPixar').addEventListener('click', () => {
-    renderModalPin()
+    renderModalPin('hasOpenedModal1')
   });
 };
 
@@ -72,7 +72,7 @@ if (document.getElementById('posterIncredibles')) {
 
 if (document.getElementById('pocao')) {
   const pocao = document.getElementById('pocao').addEventListener('click', () => {
-    renderModalPin()
+    renderModalPin('hasOpenedModal2')
   });
 };
 
@@ -220,6 +220,9 @@ function renderDoorModal() {
       <button type="button" id="btnDismiss" class="btn btnClose border-0">Fechar</button>
     </div>
     `;
+
+    sessionStorage.removeItem('hasOpenedModal1');
+    sessionStorage.removeItem('hasOpenedModal2');
   }
   if (userInfo.challenges.length < 8) {
     result += `
@@ -279,3 +282,30 @@ function renderDoorModal() {
     })
   }
 };
+
+export function renderProgressBar() {
+  const progressBar = document.querySelector('.progress-bar');
+
+  if (location.href.includes('jogar_1.html')) {
+    progressBar.style.backgroundColor = '#6E9CD2';
+  } else if (location.href.includes('jogar_2.html')) {
+    progressBar.style.backgroundColor = '#D1C6E2';
+  }
+
+  let userInfo = getUserLogged();
+  
+  if (userInfo.challenges.length === 1 || userInfo.challenges.length === 5) {
+    progressBar.style.width = '25%';
+  } else if (userInfo.challenges.length === 2 || userInfo.challenges.length === 6) {
+    progressBar.style.width = '50%';
+  } else if (userInfo.challenges.length === 3 || userInfo.challenges.length === 7) {
+    progressBar.style.width = '75%';
+  } else if (userInfo.challenges.length === 4 || userInfo.challenges.length === 8) {
+    progressBar.style.width = '100%';
+  };
+
+  if (location.href.includes('jogar_2.html') && userInfo.challenges.length === 4) {
+    progressBar.style.width = '0%';
+  }
+};
+renderProgressBar();

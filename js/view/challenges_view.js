@@ -1,6 +1,6 @@
 import * as Challenge from "../model/challenge_model.js";
 import {getUserLogged, avatares} from "../model/user_model.js";
-import {roomCode, userCode} from "./rooms_view.js"
+import {roomCode, userCode, renderProgressBar} from "./rooms_view.js"
 
 export function challengesView() {
     Challenge.init(); 
@@ -201,6 +201,7 @@ export function renderModalChallenge(id) {
         userInfo.challenges.push(challenge.id)
         sessionStorage.setItem('loggedUser', JSON.stringify(userInfo));
         renderModalAnswered('correct');
+        renderProgressBar();
       } else {
         renderModalAnswered('incorrect')
       }
@@ -313,46 +314,46 @@ function renderModalAnswered(answer) {
     }
 }
 
-export function renderModalPin() {
-    const hasOpenedModal = sessionStorage.getItem('hasOpenedModal');
-    let result = '';
-  
-    if (!hasOpenedModal) {
-      result = `
-        <div class="modal-header">
-          <h4 class="modal-title">Pin encontrado</h4>
-        </div>
-        <div class="modal-body text-center">
-          <p>Parabéns! Encontraste um pin.<br>Continua a explorar as salas e a resolver desafios para ganhares mais!</p>
-          <img src="../assets/img_modal/pin.png" class="img-fluid mt-3">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
-        </div>
-      `;
-  
-      let userInfo = getUserLogged();
-      userInfo.pins += 1;
-      sessionStorage.setItem('loggedUser', JSON.stringify(userInfo));
-    
-      sessionStorage.setItem('hasOpenedModal', 'true');
-    } else {
-      result = `
-        <div class="modal-header">
-          <h4 class="modal-title">Pin encontrado</h4>
-        </div>
-        <div class="modal-body text-center">
-          <p>Já tinhas encontrado o pin que estava escondido neste objeto.<br>Continua a explorar as salas e a resolver desafios para ganhares mais!</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
-        </div>
-      `;
-    }
-    
-    document.querySelector('#variableModal .modal-content').innerHTML = result;
-    $('#variableModal').modal('show');
+export function renderModalPin(sessionStorageKey) {
+  let userInfo = getUserLogged();
+  const hasOpenedModal = sessionStorage.getItem(sessionStorageKey);
+  let result = '';
+
+  if (!hasOpenedModal) {
+    result = `
+      <div class="modal-header">
+        <h4 class="modal-title">Pin encontrado</h4>
+      </div>
+      <div class="modal-body text-center">
+        <p>Parabéns! Encontraste um pin.<br>Continua a explorar as salas e a resolver desafios para ganhares mais!</p>
+        <img src="../assets/img_modal/pin.png" class="img-fluid mt-3">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    `;
+
+    userInfo.pins += 1;
+    sessionStorage.setItem('loggedUser', JSON.stringify(userInfo));
+
+    sessionStorage.setItem(sessionStorageKey, 'true');
+  } else {
+    result = `
+      <div class="modal-header">
+        <h4 class="modal-title">Pin encontrado</h4>
+      </div>
+      <div class="modal-body text-center">
+        <p>Já tinhas encontrado o pin que estava escondido neste objeto.<br>Continua a explorar as salas e a resolver desafios para ganhares mais!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    `;
+  }
+  document.querySelector('#variableModal .modal-content').innerHTML = result;
+  $('#variableModal').modal('show');
 }
+
 
 function answerIsCorrect(userAnswer, challenge) {
     console.log(challenge.answers);
