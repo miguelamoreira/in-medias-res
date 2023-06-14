@@ -66,7 +66,7 @@ class user {
     type = '';
     challenges = [];
 
-    constructor(username, email, password, image = '../assets/avatares/Stitch.png', time = 0, pins = 0, status = 'Ativo', type = 'Aluno', challenges = []) {
+    constructor(username, email, password, image = '../assets/avatares/Stitch.png', time = 'N/A', pins = 0, status = 'Ativo', type = 'Aluno', challenges = []) {
         this.username = username;
         this.email = email;
         this.password = password;

@@ -32,6 +32,7 @@ function userView() {
     function register(username, email, password, password2) {
         try {
         User.add(username, email, password, password2);
+
         window.location.href = "inicio_sessao.html";
         } catch (error) {
         alert(error.message);
@@ -94,7 +95,7 @@ function userView() {
     function renderLeaderboard() {
         const table = document.querySelector('tbody')
 
-        let students = User.getUsers().filter(user => user.type === 'Aluno');
+        let students = User.getUsers().filter(user => user.type === 'Aluno' && user.time != 'N/A');
         students.sort((a, b) => {
             if (a.time < b.time) {
                 return -1
