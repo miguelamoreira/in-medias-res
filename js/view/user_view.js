@@ -60,9 +60,42 @@ function userView() {
 
     if (User.isLogged()) {
         const userInfo = User.getUserLogged();
-        document.querySelector('#perfilUser').innerHTML = userInfo.username;
-        document.querySelector('#perfilTempo').innerHTML = userInfo.time;
-        document.querySelector('#perfilPins').innerHTML = userInfo.pins;
+        const content = document.getElementById('content');
+        let result = '';
+
+        if (userInfo.type === 'Aluno') {
+            result = `
+            <table class="table borderless mx-auto position-relative top-50" style="width: 80%;">
+                <thead>
+                    <th>Tempo:</th>
+                    <th>Pins:</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="perfilTempo">00:00</td>
+                        <td id="perfilPins">00</td>
+                    </tr>
+                </tbody>
+            </table>
+            `;
+            content.innerHTML = result;
+            document.querySelector('#perfilUser').innerHTML = userInfo.username;
+            document.querySelector('#perfilTempo').innerHTML = userInfo.time;
+            document.querySelector('#perfilPins').innerHTML = userInfo.pins;
+        } else if (userInfo.type === 'Professor') {
+            result = `
+            <button id="btnAti">GESTÃO <br>ATIVIDADE</button>
+            <button id="btnUsers">GESTÃO <br>UTILIZADORES</button>
+            `;
+            content.innerHTML = result;
+            document.querySelector('#perfilUser').innerHTML = userInfo.username;
+        };
+    }
+
+    if (document.getElementById('btnPass')) {
+        document.getElementById('btnPass').addEventListener('click', () => {
+            location.href = 'alterar_passe.html';
+        })
     }
     
     if (document.getElementById('btnScroll')) {

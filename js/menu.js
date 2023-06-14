@@ -10,11 +10,7 @@ document.querySelector("#btnLogin").addEventListener("click", () => {
   if (isLogged()) {
     const btnPerfil = document.getElementById('txtLogin');
     const userInfo = getUserLogged();
-    if (userInfo.type === 'Aluno') {
-      location.href = "perfil_aluno.html";
-    } else if (userInfo.type === 'Professor') {
-      location.href = "perfil_aluno.html";
-    }
+    location.href = 'perfil.html';
   } else {
     location.href = "inicio_sessao.html";
   }
