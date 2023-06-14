@@ -6,6 +6,12 @@ $(document).ready(function(e) {
   $('img[usemap]').rwdImageMaps(); 
 });
 
+if (document.getElementById('salaSair')) {
+  const btnSair = document.getElementById('salaSair').addEventListener('click', () => {
+    location.href = 'menu.html';
+  })
+}
+
 //  sala 1
 $(window).on('load', function() {
   $('#rInicio').modal('show');
