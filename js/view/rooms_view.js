@@ -67,11 +67,17 @@ if (document.getElementById('porta')) {
 if (document.getElementById('bola')) {
   const bola = document.getElementById('bola').addEventListener('click', () => {
     let userInfo = getUserLogged()
-    if (userInfo.challenges.includes(2)) {
+    if (userInfo.challenges.includes(2) && sessionStorage.getItem('hasOpenedLesson1')) {
       renderModalChallenge(3)
     } else {
       renderModalBlocked()
     }
+  });
+};
+
+if (document.getElementById('orelhas')) {
+  const orelhas = document.getElementById('orelhas').addEventListener('click', () => {
+    sessionStorage.setItem('hasOpenedLesson1', 'true')
   });
 };
 
@@ -84,13 +90,21 @@ if (!Room.roomCodeExists()) {
 
 if (document.getElementById('castelo')) {
   const castelo = document.getElementById('castelo').addEventListener('click', () => {
-    renderModalChallenge(6);
+    if (sessionStorage.getItem('hasOpenedLesson2')) {
+      renderModalChallenge(6);
+    } else {
+      renderModalBlocked();
+    }
   });
 };
 
 if (document.getElementById('posterIncredibles')) {
   const posterIncredibles = document.getElementById('posterIncredibles').addEventListener('click', () => {
-    renderModalChallenge(5);
+    if (sessionStorage.getItem('hasOpenedLesson3')) {
+      renderModalChallenge(5);
+    } else {
+      renderModalBlocked();
+    }
   });
 };
 
@@ -102,13 +116,33 @@ if (document.getElementById('pocao')) {
 
 if (document.getElementById('balao')) {
   const balao = document.getElementById('balao').addEventListener('click', () => {
-    renderModalChallenge(7);
+    if (sessionStorage.getItem('hasOpenedLesson3')) {
+      renderModalChallenge(7);
+    } else {
+      renderModalBlocked();
+    }
   });
 };
 
 if (document.getElementById('faisca')) {
   const faisca = document.getElementById('faisca').addEventListener('click', () => {
-    renderModalChallenge(8);
+    if (sessionStorage.getItem('hasOpenedLesson3')) {
+      renderModalChallenge(8);
+    } else {
+      renderModalBlocked();
+    }
+  });
+};
+
+if (document.getElementById('eva')) {
+  const eva = document.getElementById('eva').addEventListener('click', () => {
+    sessionStorage.setItem('hasOpenedLesson2', 'true')
+  });
+};
+
+if (document.getElementById('bolaPixar')) {
+  const bolaPixar = document.getElementById('bolaPixar').addEventListener('click', () => {
+    sessionStorage.setItem('hasOpenedLesson3', 'true')
   });
 };
 
@@ -276,6 +310,9 @@ function renderDoorModal() {
 
     sessionStorage.removeItem('hasOpenedModal1');
     sessionStorage.removeItem('hasOpenedModal2');
+    sessionStorage.removeItem('hasOpenedLesson1');
+    sessionStorage.removeItem('hasOpenedLesson2');
+    sessionStorage.removeItem('hasOpenedLesson3');
   }
   if (userInfo.challenges.length < 8) {
     result += `

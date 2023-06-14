@@ -57,13 +57,6 @@ function userView() {
         });
     });
 
-    if (User.isLogged()) {
-        const userInfo = User.getUserLogged();
-        document.querySelector('#perfilUser').innerHTML = userInfo.username;
-        document.querySelector('#perfilTempo').innerHTML = userInfo.time;
-        document.querySelector('#perfilPins').innerHTML = userInfo.pins;
-    }
-    
     if (document.getElementById('btnScroll')) {
         const firstTxt = document.querySelector('.visible');
         const secondTxt = document.querySelector('.invisible');
@@ -96,6 +89,55 @@ function userView() {
                 }
             });
         });
+    }
+
+    function renderLeaderboard() {
+        const table = document.querySelector('tbody')
+
+        let students = User.getUsers().filter(user => user.type === 'Aluno');
+        students.sort((a, b) => {
+            if (a.time < b.time) {
+                return -1
+            } else if (a.time > b.time) {
+                return 1
+            } else {
+                return 0
+            }
+        })
+        students.length = 5
+
+        let result = ''
+        for (let i = 0; i < 5; i++) {
+            if (students[i] == null) {
+                result += `
+                <tr>
+                    <td>${i+1}º</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                `
+            } else {
+                result += `
+                <tr>
+                    <td>${i+1}º</td>
+                    <td>${students[i].username}</td>
+                    <td>${students[i].time}</td>
+                </tr>
+                `
+            }
+        }
+        table.innerHTML = result
+    }
+
+    if (location.href.includes('leaderboard.html')) {
+        renderLeaderboard()
+    }
+
+    if (User.isLogged()) {
+        const userInfo = User.getUserLogged();
+        document.querySelector('#perfilUser').innerHTML = userInfo.username;
+        document.querySelector('#perfilTempo').innerHTML = userInfo.time;
+        document.querySelector('#perfilPins').innerHTML = userInfo.pins;
     }
 }
 
