@@ -1,9 +1,9 @@
 import {renderModalChallenge, renderModalPin} from "./challenges_view.js"
 import {getUserLogged, getUsers, avatares} from "../model/user_model.js";
+import * as Room from "../model/room_model.js";
 
 $(document).ready(function(e) {
-    $('img[usemap]').rwdImageMaps(); 
-    
+  $('img[usemap]').rwdImageMaps(); 
 });
 
 //  sala 1
@@ -26,7 +26,12 @@ if (document.getElementById('posterPixar')) {
 
 if (document.getElementById('posterDisney')) {
   const posterDisney = document.getElementById('posterDisney').addEventListener('click', () => {
-    renderModalChallenge(1);
+    let userInfo = getUserLogged()
+    if (userInfo.challenges.includes(3)) {
+      renderModalChallenge(1);
+    } else {
+      renderModalBlocked()
+    }
   });
 };
 
@@ -38,7 +43,12 @@ if (document.getElementById('bau')) {
 
 if (document.getElementById('desenho')) {
   const desenho = document.getElementById('desenho').addEventListener('click', () => {
-    renderModalChallenge(4);
+    let userInfo = getUserLogged()
+    if (userInfo.challenges.includes(1)) {
+      renderModalChallenge(4);
+    } else {
+      renderModalBlocked()
+    }
   });
 };
 
@@ -50,13 +60,21 @@ if (document.getElementById('porta')) {
 
 if (document.getElementById('bola')) {
   const bola = document.getElementById('bola').addEventListener('click', () => {
-    renderModalChallenge(3);
+    let userInfo = getUserLogged()
+    if (userInfo.challenges.includes(2)) {
+      renderModalChallenge(3)
+    } else {
+      renderModalBlocked()
+    }
   });
 };
 
 // sala 2
-export let roomCode = [Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10)]
-export let userCode = ['','','','']
+if (!Room.roomCodeExists()) {
+  let roomCode = [Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10)]
+  sessionStorage.setItem('roomCode', JSON.stringify(roomCode))
+  sessionStorage.setItem('userCode', JSON.stringify(['','','','']))
+}
 
 if (document.getElementById('castelo')) {
   const castelo = document.getElementById('castelo').addEventListener('click', () => {
@@ -177,7 +195,7 @@ function renderDoorModal() {
       <img src="../assets/img_modal/sadness.png" class="img-fluid">
     </div>
     `;
-  } else if (userInfo.challenges.length === 4) {
+  } else if (userInfo.challenges.length === 4 && location.href.includes('jogar_1.html')) {
     result = `
     <div class="modal-header">
       <h4 class="modal-title">Porta destrancada</h4>
@@ -187,7 +205,8 @@ function renderDoorModal() {
       <img src="../assets/avatares/${avatares[5]}" class="img-fluid mt-3">
     </div>
     `;
-  } else if (userInfo.challenges.length > 4 && userInfo.challenges.length < 8) {
+  } else if (userInfo.challenges.length >= 4 && userInfo.challenges.length < 8) {
+    let userCode = Room.getUserCode()
     result = `
     <div class="modal-header">
       <h4 class="modal-title">Porta trancada</h4>
@@ -203,6 +222,7 @@ function renderDoorModal() {
     </div>
     `;
   } else if (userInfo.challenges.length === 8) {
+    let roomCode = Room.getRoomCode()
     result = `
     <div class="modal-header">
       <h4 class="modal-title">Porta destrancada</h4>
@@ -235,7 +255,7 @@ function renderDoorModal() {
   document.querySelector('#variableModal .modal-content').innerHTML = result
   $('#variableModal').modal('show');
 
-  if ((userInfo.challenges.length === 4  || userInfo.challenges.length === 8)) {
+  if (((userInfo.challenges.length === 4 && location.href.includes('jogar_1.html')) || userInfo.challenges.length === 8)) {
     document.querySelector('#btnDismiss').addEventListener('click', () => {
       if (userInfo.challenges.length === 8) {
         let result = ''
@@ -270,6 +290,7 @@ function renderDoorModal() {
         $('#variableModal').modal('show');
 
         document.querySelector('#btnDismiss').addEventListener('click', () => {
+          Room.deleteRoomCodes();
           location.href = "menu.html"
         })
       } else {
@@ -282,6 +303,23 @@ function renderDoorModal() {
     })
   }
 };
+
+function renderModalBlocked() {
+  let result = `
+    <div class="modal-header">
+      <h4 class="modal-title">Desafio bloqueado</h4>
+    </div>
+    <div class="modal-body text-center">
+      <p>Esse desafio está bloqueado!
+        <br>Continua a explorar a sala para o desbloquear.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
+    </div>
+  `
+  document.querySelector('#variableModal .modal-content').innerHTML = result
+  $('#variableModal').modal('show');
+}
 
 export function renderProgressBar() {
   const progressBar = document.querySelector('.progress-bar');

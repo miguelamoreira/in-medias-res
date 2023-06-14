@@ -1,6 +1,7 @@
 import * as Challenge from "../model/challenge_model.js";
+import * as Room from "../model/room_model.js";
 import {getUserLogged, avatares} from "../model/user_model.js";
-import {roomCode, userCode, renderProgressBar} from "./rooms_view.js"
+import {renderProgressBar} from "./rooms_view.js"
 
 export function challengesView() {
     Challenge.init(); 
@@ -218,8 +219,11 @@ function renderModalAnswered(answer) {
       </div>
       `
       if (location.href.includes('jogar_2.html')) {
+        let userCode = Room.getUserCode()
+        let roomCode = Room.getRoomCode()
         let digitIndex = userCode.findIndex(digit => digit === '')
         userCode[digitIndex] = roomCode[digitIndex]
+        sessionStorage.setItem('userCode', JSON.stringify(userCode))
         result += `
         <div class="modal-body text-center">
           <p>Parabéns! Conseguiste completar o desafio e, como recompensa, desbloqueaste um dos números do código da porta.
@@ -353,7 +357,6 @@ export function renderModalPin(sessionStorageKey) {
   document.querySelector('#variableModal .modal-content').innerHTML = result;
   $('#variableModal').modal('show');
 }
-
 
 function answerIsCorrect(userAnswer, challenge) {
     console.log(challenge.answers);

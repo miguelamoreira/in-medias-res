@@ -2,9 +2,9 @@ let rooms;
 
 export function init() {
     rooms = localStorage.rooms ? JSON.parse(localStorage.rooms) : [];
-  }
+}
 
-class room {
+export class Room {
     id = '';
     name = '';
     image = '';
@@ -18,4 +18,21 @@ class room {
         this.challenges = challenges;
         //this.pins = pins
     }
+}
+
+export function roomCodeExists() {
+    return sessionStorage.getItem('roomCode') ? true : false;
+}
+
+export function getRoomCode() {
+    return JSON.parse(sessionStorage.getItem("roomCode"));
+}
+
+export function getUserCode() {
+    return JSON.parse(sessionStorage.getItem("userCode"));
+}
+
+export function deleteRoomCodes() {
+    sessionStorage.removeItem('roomCode');
+    sessionStorage.removeItem('userCode');
 }
