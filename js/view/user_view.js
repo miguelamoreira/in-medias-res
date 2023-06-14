@@ -64,6 +64,39 @@ function userView() {
         document.querySelector('#perfilPins').innerHTML = userInfo.pins;
     }
     
+    if (document.getElementById('btnScroll')) {
+        const firstTxt = document.querySelector('.visible');
+        const secondTxt = document.querySelector('.invisible');
+        let isArrow1 = true;
+        document.getElementById('btnScroll').addEventListener('click', function() {
+            if (isArrow1) {
+                firstTxt.className = 'invisible';
+                secondTxt.className = 'visible';
+                document.querySelector('.arrow').src = '../assets/botoes/arrow2.png';
+                isArrow1 = false; 
+            } else {
+                firstTxt.className = 'visible';
+                secondTxt.className = 'invisible';
+                document.querySelector('.arrow').src = '../assets/botoes/arrow1.png';
+                isArrow1 = true; 
+            }
+        });
+    }
+
+    if (document.querySelectorAll('.btnAction')) {
+        let isUnblocked = true;
+        document.querySelectorAll('.btnAction').forEach(btnAction => {
+            btnAction.addEventListener('click', function() {
+                if (isUnblocked) {
+                    btnAction.innerHTML = 'ATIVAR';
+                    isUnblocked = false; 
+                } else {
+                    btnAction.innerHTML = 'DESATIVAR';
+                    isUnblocked = true; 
+                }
+            });
+        });
+    }
 }
 
 userView();
