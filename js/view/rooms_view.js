@@ -109,29 +109,56 @@ if (document.getElementById('faisca')) {
 function countdownTimer() {
   const countdownDuration = 30 * 60 * 1000;
 
-  const startTime = new Date().getTime();
+  let goneTime = sessionStorage.getItem('goneTime');
+  let remainingTime = sessionStorage.getItem('remainingTime');
+
+  const startTime = goneTime ? new Date().getTime() - goneTime : new Date().getTime();
 
   let countdown = setInterval(function() {
     let currentTime = new Date().getTime();
 
-    let goneTime = currentTime - startTime;
-    let remainingTime = countdownDuration - goneTime;
+    goneTime = currentTime - startTime;
+    remainingTime = countdownDuration - goneTime;
+
+    sessionStorage.setItem('goneTime', goneTime);
+    sessionStorage.setItem('remainingTime', remainingTime);
 
     if (remainingTime <= 0) {
       clearInterval(countdown);
       document.getElementById("txtContador").innerHTML = "00:00";
+      sessionStorage.removeItem('goneTime');
+      sessionStorage.removeItem('remainingTime');
     } else {
-      const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+      const userInfo = getUserLogged();
+      const minutesRemaining = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+      const secondsRemaining = Math.floor((remainingTime % (1000 * 60)) / 1000);
+      const minutesGone = Math.floor((goneTime % (1000 * 60 * 60)) / (1000 * 60));
+      const secondsGone = Math.floor((goneTime % (1000 * 60)) / 1000);
 
-      let formMin = ("0" + minutes).slice(-2);
-      let formSec = ("0" + seconds).slice(-2);
+      let formMinRemaining = ("0" + minutesRemaining).slice(-2);
+      let formSecRemaining = ("0" + secondsRemaining).slice(-2);
+      let formMinGone = ("0" + minutesGone).slice(-2);
+      let formSecGone = ("0" + secondsGone).slice(-2);
 
-      let countdownText = formMin + ":" + formSec;
+      let countdownText = formMinRemaining + ":" + formSecRemaining;
       document.getElementById("txtContador").innerHTML = countdownText;
-    };
+
+      if (userInfo.challenges.length === 8) {
+        clearInterval(countdown);
+        let userTime = userInfo.time.replace(':', '');
+        let countdownGone = formMinGone + formSecGone;
+
+        if (countdownGone < userTime) {
+          let countdownSave = formMinGone + ":" + formSecGone;
+    
+          userInfo.time = countdownSave;
+          sessionStorage.setItem('loggedUser', JSON.stringify(userInfo));
+          localStorage.setItem('loggedUser', JSON.stringify(userInfo));
+        }
+      }
+    }
   }, 1000);
-};
+}
 
 function renderModalInfo() {
   let userInfo = getUserLogged();
@@ -292,6 +319,8 @@ function renderDoorModal() {
         document.querySelector('#btnDismiss').addEventListener('click', () => {
           Room.deleteRoomCodes();
           location.href = "menu.html"
+          sessionStorage.removeItem('goneTime');
+          sessionStorage.removeItem('remainingTime');
         })
       } else {
         location.href = "jogar_2.html";
