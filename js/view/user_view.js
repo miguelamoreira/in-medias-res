@@ -58,6 +58,13 @@ function userView() {
         });
     });
 
+    if (User.isLogged()) {
+        const userInfo = User.getUserLogged();
+        document.querySelector('#perfilUser').innerHTML = userInfo.username;
+        document.querySelector('#perfilTempo').innerHTML = userInfo.time;
+        document.querySelector('#perfilPins').innerHTML = userInfo.pins;
+    }
+    
     if (document.getElementById('btnScroll')) {
         const firstTxt = document.querySelector('.visible');
         const secondTxt = document.querySelector('.invisible');

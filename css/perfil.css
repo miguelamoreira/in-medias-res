@@ -136,7 +136,7 @@ p {
     width: 2em;
 }
 
-#btnPass {
+#btnAti, #btnUsers, #btnPass {
     background-color: rgba(255, 237, 199, 1);
     border: none;
     border-radius: 20px;

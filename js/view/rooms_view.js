@@ -82,6 +82,7 @@ if (document.getElementById('orelhas')) {
 };
 
 // sala 2
+
 if (!Room.roomCodeExists()) {
   let roomCode = [Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10)]
   sessionStorage.setItem('roomCode', JSON.stringify(roomCode))

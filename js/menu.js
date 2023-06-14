@@ -13,7 +13,7 @@ document.querySelector("#btnLogin").addEventListener("click", () => {
     if (userInfo.type === 'Aluno') {
       location.href = "perfil_aluno.html";
     } else if (userInfo.type === 'Professor') {
-      location.href = "perfil_professor.html";
+      location.href = "perfil_aluno.html";
     }
   } else {
     location.href = "inicio_sessao.html";

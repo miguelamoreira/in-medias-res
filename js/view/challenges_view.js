@@ -106,7 +106,7 @@ export function renderModalChallenge(id) {
           <div class="modal-header">
             <h4 class="modal-title">${challenge.title}</h4>
           </div>
-          <form id="modalChallenge">
+          <form id="modalChallenge" autocomplete="off">
             <div class="modal-body text-center">   
             <p>${challenge.question}</p>
     `
@@ -183,19 +183,15 @@ export function renderModalChallenge(id) {
       let userAnswer;
       if (challenge.type === 'directAnswer') {
         userAnswer = document.querySelector('#answer').value;
-        console.log(userAnswer);
       } else if (challenge.type === 'multipleChoice') {
         userAnswer = +document.querySelector('input[name="multipleChoiceQuestion"]:checked').value;
-        console.log(userAnswer);
       } else if (challenge.type === 'multipleAnswer') {
         const userAnswer1 = document.querySelector('#answer1').value
         const userAnswer2 = document.querySelector('#answer2').value
         const userAnswer3 = document.querySelector('#answer3').value
         userAnswer = [userAnswer1, userAnswer2, userAnswer3]
-        console.log(userAnswer);
       } else if (challenge.type === 'trueOrFalse') {
         userAnswer = +document.querySelector('input[name="trueOrFalseQuestion"]:checked').value;
-        console.log(userAnswer);
       }
       if (answerIsCorrect(userAnswer, challenge)) {
         let userInfo = getUserLogged();
@@ -359,7 +355,6 @@ export function renderModalPin(sessionStorageKey) {
 }
 
 function answerIsCorrect(userAnswer, challenge) {
-    console.log(challenge.answers);
     if (challenge.type === 'directAnswer') {
         return userAnswer.toLowerCase() === challenge.answer.toLowerCase()
     } else if (challenge.type === 'multipleChoice' || challenge.type === 'trueOrFalse') {
