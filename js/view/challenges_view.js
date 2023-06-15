@@ -1,5 +1,4 @@
 import * as Challenge from "../model/challenge_model.js";
-import * as Room from "../model/room_model.js";
 import {getUserLogged, avatares} from "../model/user_model.js";
 import {renderProgressBar} from "./rooms_view.js"
 
@@ -215,8 +214,8 @@ function renderModalAnswered(answer) {
       </div>
       `
       if (location.href.includes('jogar_2.html')) {
-        let userCode = Room.getUserCode()
-        let roomCode = Room.getRoomCode()
+        let userCode = Challenge.getUserCode()
+        let roomCode = Challenge.getRoomCode()
         let digitIndex = userCode.findIndex(digit => digit === '')
         userCode[digitIndex] = roomCode[digitIndex]
         sessionStorage.setItem('userCode', JSON.stringify(userCode))

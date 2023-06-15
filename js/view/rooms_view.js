@@ -1,6 +1,6 @@
 import {renderModalChallenge, renderModalPin} from "./challenges_view.js"
 import {getUserLogged, getUsers, avatares} from "../model/user_model.js";
-import * as Room from "../model/room_model.js";
+import * as Challenge from "../model/challenge_model.js";
 
 $(document).ready(function(e) {
   $('img[usemap]').rwdImageMaps(); 
@@ -83,7 +83,7 @@ if (document.getElementById('orelhas')) {
 
 // sala 2
 
-if (!Room.roomCodeExists()) {
+if (!Challenge.roomCodeExists()) {
   let roomCode = [Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10)]
   sessionStorage.setItem('roomCode', JSON.stringify(roomCode))
   sessionStorage.setItem('userCode', JSON.stringify(['','','','']))
@@ -187,7 +187,7 @@ function countdownTimer() {
       $('#variableModal').modal('show');
 
       document.querySelector('#btnDismiss').addEventListener('click', () => {
-        Room.deleteRoomCodes();
+        Challenge.deleteRoomCodes();
         location.href = "menu.html"
         localStorage.removeItem('goneTime');
         localStorage.removeItem('remainingTime');
@@ -307,7 +307,7 @@ function renderDoorModal() {
     </div>
     `;
   } else if (userInfo.challenges.length >= 4 && userInfo.challenges.length < 8) {
-    let userCode = Room.getUserCode()
+    let userCode = Challenge.getUserCode()
     result = `
     <div class="modal-header">
       <h4 class="modal-title">Porta trancada</h4>
@@ -323,7 +323,7 @@ function renderDoorModal() {
     </div>
     `;
   } else if (userInfo.challenges.length === 8) {
-    let roomCode = Room.getRoomCode()
+    let roomCode = Challenge.getRoomCode()
     result = `
     <div class="modal-header">
       <h4 class="modal-title">Porta destrancada</h4>
@@ -394,7 +394,7 @@ function renderDoorModal() {
         $('#variableModal').modal('show');
 
         document.querySelector('#btnDismiss').addEventListener('click', () => {
-          Room.deleteRoomCodes();
+          Challenge.deleteRoomCodes();
           location.href = "menu.html"
           localStorage.removeItem('goneTime');
           localStorage.removeItem('remainingTime');

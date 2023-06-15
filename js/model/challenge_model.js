@@ -59,3 +59,20 @@ export class trueOrFalseChallenge extends Challenge {
     this.correctAnswer = correctAnswer
   };
 };
+
+export function roomCodeExists() {
+  return sessionStorage.getItem('roomCode') ? true : false;
+}
+
+export function getRoomCode() {
+  return JSON.parse(sessionStorage.getItem("roomCode"));
+}
+
+export function getUserCode() {
+  return JSON.parse(sessionStorage.getItem("userCode"));
+}
+
+export function deleteRoomCodes() {
+  sessionStorage.removeItem('roomCode');
+  sessionStorage.removeItem('userCode');
+}
