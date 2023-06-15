@@ -9,14 +9,12 @@ export class Room {
     name = '';
     image = '';
     challenges = [];
-    // pins = [];
 
     constructor(id, name, image, challenges) {
         this.id = id;
         this.name = name;
         this.image = image;
         this.challenges = challenges;
-        //this.pins = pins
     }
 }
 

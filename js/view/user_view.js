@@ -58,6 +58,31 @@ function userView() {
         });
     });
 
+    document.addEventListener('DOMContentLoaded', function() {
+        const formPass = document.getElementById('formPass');
+        formPass.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userInfo = User.getUserLogged();
+            let users = User.getUsers();
+            let userIndex = users.findIndex(user => user.username === userInfo.username);
+            const oldPass = document.getElementById('oldPass').value;
+            const newPass = document.getElementById('newPass').value;
+            const confirmPass = document.getElementById('confirmPass').value;
+    
+            try {
+                User.changePassword(userInfo.username, oldPass, newPass, confirmPass);
+                users[userIndex] = { ...users[userIndex], password: newPass }; 
+                alert('Palavra-passe alterada com sucesso!');
+            } catch (error) {
+                alert(error.message);
+            }
+    
+            document.getElementById('oldPass').value = '';
+            document.getElementById('newPass').value = '';
+            document.getElementById('confirmPass').value = '';
+        });
+    });
+    
     if (User.isLogged()) {
         const userInfo = User.getUserLogged();
         const content = document.getElementById('content');
@@ -172,13 +197,6 @@ function userView() {
 
     if (location.href.includes('leaderboard.html')) {
         renderLeaderboard()
-    }
-
-    if (User.isLogged()) {
-        const userInfo = User.getUserLogged();
-        document.querySelector('#perfilUser').innerHTML = userInfo.username;
-        document.querySelector('#perfilTempo').innerHTML = userInfo.time;
-        document.querySelector('#perfilPins').innerHTML = userInfo.pins;
     }
 }
 

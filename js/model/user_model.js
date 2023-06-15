@@ -28,7 +28,22 @@ export function login(email, password) {
     } else {
       throw Error("Invalid login!");
     }
-  }
+}
+
+export function changePassword(username, oldPass, newPass, confirmPass) {
+    const user = users.find((user) => user.username === username);
+
+    if (!user) {
+        throw new Error(`O username ${username} não existe!`);
+    } else if (user.password !== oldPass) {
+        throw new Error('Palavra-passe incorreta!');
+    } else if (newPass !== confirmPass) {
+        throw new Error('As novas palavras-passe não correspondem!');
+    }
+
+    user.password = newPass;
+    localStorage.setItem('users', JSON.stringify(users));
+}
 
 export function logout() {
     sessionStorage.removeItem("loggedUser");
