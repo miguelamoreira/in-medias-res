@@ -150,25 +150,49 @@ if (document.getElementById('bolaPixar')) {
 function countdownTimer() {
   const countdownDuration = 30 * 60 * 1000;
 
-  let goneTime = sessionStorage.getItem('goneTime');
-  let remainingTime = sessionStorage.getItem('remainingTime');
+  let goneTime = localStorage.getItem('goneTime');
+  let remainingTime = localStorage.getItem('remainingTime');
 
-  const startTime = goneTime ? new Date().getTime() - goneTime : new Date().getTime();
+  const startTime = goneTime ? new Date().getTime() - goneTime : new Date().getTime() - remainingTime;
 
   let countdown = setInterval(function() {
     let currentTime = new Date().getTime();
+    let result = '';
 
     goneTime = currentTime - startTime;
     remainingTime = countdownDuration - goneTime;
 
-    sessionStorage.setItem('goneTime', goneTime);
-    sessionStorage.setItem('remainingTime', remainingTime);
+    localStorage.setItem('goneTime', goneTime);
+    localStorage.setItem('remainingTime', remainingTime);
 
     if (remainingTime <= 0) {
       clearInterval(countdown);
       document.getElementById("txtContador").innerHTML = "00:00";
-      sessionStorage.removeItem('goneTime');
-      sessionStorage.removeItem('remainingTime');
+      localStorage.removeItem('goneTime');
+      localStorage.removeItem('remainingTime');
+      result = result += `
+      <div class="modal-header">
+        <h4 class="modal-title">Fim do tempo</h4>
+      </div>
+      <div class="modal-body text-center">
+        <p>Infelizmente não conseguiste completar todos os desafios a tempo.<br>Volta ao menu e tenta novamente!</p>
+        <img src="../assets/img_modal/sadness.png" class="img-fluid mt-3">
+      </div>
+      <div class="modal-footer">
+      <button type="button" id="btnDismiss" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
+      </div>
+      `
+
+      document.querySelector('#variableModal .modal-content').innerHTML = result
+      $('#variableModal').modal('show');
+
+      document.querySelector('#btnDismiss').addEventListener('click', () => {
+        Room.deleteRoomCodes();
+        location.href = "menu.html"
+        localStorage.removeItem('goneTime');
+        localStorage.removeItem('remainingTime');
+      });
+
     } else {
       const userInfo = getUserLogged();
       const minutesRemaining = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
@@ -183,12 +207,20 @@ function countdownTimer() {
 
       let countdownText = formMinRemaining + ":" + formSecRemaining;
       document.getElementById("txtContador").innerHTML = countdownText;
+    
+      let countdownRemaining = formMinRemaining + formSecRemaining;
+
+      if (countdownRemaining <= '0500') {
+        if (document.getElementById('countdownImg')) {
+          document.getElementById('countdownImg').src = '../assets/salas/contador_alerta.png';
+        }
+      }
 
       if (userInfo.challenges.length === 8) {
         clearInterval(countdown);
         let userTime = userInfo.time.replace(':', '');
         let countdownGone = formMinGone + formSecGone;
-
+      
         if (countdownGone < userTime) {
           let countdownSave = formMinGone + ":" + formSecGone;
     
@@ -201,13 +233,14 @@ function countdownTimer() {
   }, 1000);
 }
 
+
 function renderModalInfo() {
   let userInfo = getUserLogged();
   let result = '';
   if (location.href.includes('jogar_1.html')) {
     result = `
     <div class="modal-header">
-        <h4 class="modal-title">Armazém</h4>
+        <h4 class="modal-title">Boletim de explorador</h4>
     </div>
     <div class="modal-body">
       <div class="d-flex flex-row ms-5">
@@ -363,8 +396,8 @@ function renderDoorModal() {
         document.querySelector('#btnDismiss').addEventListener('click', () => {
           Room.deleteRoomCodes();
           location.href = "menu.html"
-          sessionStorage.removeItem('goneTime');
-          sessionStorage.removeItem('remainingTime');
+          localStorage.removeItem('goneTime');
+          localStorage.removeItem('remainingTime');
         })
       } else {
         location.href = "jogar_2.html";
@@ -407,12 +440,16 @@ export function renderProgressBar() {
   
   if (userInfo.challenges.length === 1 || userInfo.challenges.length === 5) {
     progressBar.style.width = '25%';
+    progressBar.innerHTML = '1/4';
   } else if (userInfo.challenges.length === 2 || userInfo.challenges.length === 6) {
     progressBar.style.width = '50%';
+    progressBar.innerHTML = '2/4';
   } else if (userInfo.challenges.length === 3 || userInfo.challenges.length === 7) {
     progressBar.style.width = '75%';
+    progressBar.innerHTML = '3/4';
   } else if (userInfo.challenges.length === 4 || userInfo.challenges.length === 8) {
     progressBar.style.width = '100%';
+    progressBar.innerHTML = '4/4';
   };
 
   if (location.href.includes('jogar_2.html') && userInfo.challenges.length === 4) {

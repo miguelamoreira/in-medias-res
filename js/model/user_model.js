@@ -26,7 +26,7 @@ export function login(email, password) {
       sessionStorage.setItem("loggedUser", JSON.stringify(user));
       return true;
     } else {
-      throw Error("Invalid login!");
+      throw Error("Dados incorretos!");
     }
 }
 

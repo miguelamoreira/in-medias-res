@@ -12,17 +12,19 @@
 </head>
 <body>
     <div class="container">
-        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="height: 2em;">
             <div class="progress-bar" style="width: 0%"></div>
         </div>
         <div class="row">
             <div class="d-flex flex-row options-room">
                 <button id="salaSair">
                     <img src="../assets/salas/botao_sair.png">
-                    <span id="txtContador">00:00</span>
                 </button>
                 <button id="salaArmazem"><img src="../assets/salas/botao_armazem.png" class="img-fluid"></button> 
-                <button id="salaContador"><img src="../assets/salas/contador.png" class="img-fluid"></button>
+                <button id="salaContador">
+                  <img src="../assets/salas/contador.png" class="img-fluid" id="countdownImg">
+                  <span id="txtContador">00:00</span>
+                </button>
             </div>
             <img src="../assets/salas/sala2-completa.png" usemap="#map-room-2" class="img-fluid img-responsive rounded mx-auto d-block">
             <map name="map-room-2">

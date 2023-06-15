@@ -86,6 +86,7 @@ button {
 
 .options-room {
     position: fixed;
+    margin-top: 1em;
 }
 
 #txtContador {
@@ -97,5 +98,17 @@ button {
     font-style: normal;
     font-weight: 500;
     font-size: 22px;
+    letter-spacing: 0.3em;
+}
+
+.progress {
+    background-color: #F6F6F6;
+}
+
+.progress-percentage, .progress-bar {
+    font-family: 'Futura-Medium', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
     letter-spacing: 0.3em;
 }
