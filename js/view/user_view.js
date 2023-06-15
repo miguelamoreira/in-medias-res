@@ -73,6 +73,7 @@ function userView() {
                 User.changePassword(userInfo.username, oldPass, newPass, confirmPass);
                 users[userIndex] = { ...users[userIndex], password: newPass }; 
                 alert('Palavra-passe alterada com sucesso!');
+                location.href = 'perfil.html'
             } catch (error) {
                 alert(error.message);
             }
@@ -108,25 +109,10 @@ function userView() {
         });
     }
 
-    if (document.querySelectorAll('.btnAction')) {
-        let isUnblocked = true;
-        document.querySelectorAll('.btnAction').forEach(btnAction => {
-            btnAction.addEventListener('click', function() {
-                if (isUnblocked) {
-                    btnAction.innerHTML = 'ATIVAR';
-                    isUnblocked = false; 
-                } else {
-                    btnAction.innerHTML = 'DESATIVAR';
-                    isUnblocked = true; 
-                }
-            });
-        });
-    }
-
     function renderLeaderboard() {
         const table = document.querySelector('tbody')
 
-        let students = User.getUsers().filter(user => user.type === 'Aluno' && user.time != 'N/A');
+        let students = User.getUsers().filter(user => user.type === 'Aluno' && user.time != 'N/A' && user.status === 'Ativo');
         students.sort((a, b) => {
             if (a.time < b.time) {
                 return -1
@@ -165,7 +151,7 @@ function userView() {
         renderLeaderboard()
     }
 
-    if (User.isLogged()) {
+    if (User.isLogged() && location.href.includes('perfil.html')) {
         const userInfo = User.getUserLogged();
         const content = document.getElementById('content');
         let result = '';
@@ -191,12 +177,74 @@ function userView() {
             document.querySelector('#perfilPins').innerHTML = userInfo.pins;
         } else if (userInfo.type === 'Professor') {
             result = `
-            <button id="btnAti">GESTÃO <br>ATIVIDADE</button>
-            <button id="btnUsers">GESTÃO <br>UTILIZADORES</button>
+            <div class="d-flex flex-column">
+                <div class="mt-3">
+                    <button id="btnAti">GESTÃO DE<br>ATIVIDADES</button>
+                </div>
+                <div class="mt-3">
+                    <button id="btnUsers">GESTÃO DE<br>UTILIZADORES</button>
+                </div>
+            </div>
             `;
             content.innerHTML = result;
             document.querySelector('#perfilUser').innerHTML = userInfo.username;
         };
+    }
+
+    if (document.getElementById('btnUsers')) {
+        document.getElementById('btnUsers').addEventListener('click', () => {
+            location.href = 'gestao_utilizadores.html';
+        })
+    }
+
+    function manageUsers() {
+        const list = document.querySelector('.list-users')
+
+        let students = User.getUsers().filter(user => user.type === 'Aluno');
+        let result = ''
+        for (let student of students) {
+            result += `
+            <div class="d-flex flex-row align-items-center justify-content-between card-text mx-5 mb-3 action-fields user-action">
+                <p class="username flex-fill">${student.username}</p>
+            `
+            if (student.status === 'Ativo') {
+                result += '<button class="btnAction">DESATIVAR</button>'
+            } else {
+                result += '<button class="btnAction">ATIVAR</button>'
+            }
+            result += '</div>'
+        }
+        list.innerHTML = result
+
+        document.querySelectorAll('.user-action').forEach(userAction => {
+            let student = students.find(student => userAction.querySelector('p').innerHTML == student.username)
+            console.log(userAction);
+            userAction.querySelector('.btnAction').addEventListener('click', function() {
+                console.log(student);
+                if (student.status === 'Ativo') {
+                    student.status = 'Inativo'
+                    userAction.querySelector('.btnAction').innerHTML = 'ATIVAR'
+                } else {
+                    student.status = 'Ativo'
+                    userAction.querySelector('.btnAction').innerHTML = 'DESATIVAR'
+                }
+            })
+        });
+
+        document.querySelector('#btnSave').addEventListener('click', () => {
+            let users = User.getUsers()
+            students.forEach(student => {
+                let studentIndex = users.findIndex(user => user.username === student.username)
+                users[studentIndex] = student
+            })
+            localStorage.setItem('users', JSON.stringify(users))
+            alert('Dados guardados com sucesso!');
+            location.href = 'perfil.html'
+        })
+    }
+
+    if (location.href.includes('gestao_utilizadores.html')) {
+        manageUsers()
     }
 }
 

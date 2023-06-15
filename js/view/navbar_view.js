@@ -11,11 +11,7 @@ function navbarView() {
     const btnLogOut = document.getElementById('btnLogOut');
     btnLogOut.addEventListener('click', function() {
         User.logout();
-        if (location.href.includes('perfil.html') || location.href.includes('alterar_passe.html')) {
-            location.href = 'menu.html';
-        } else {
-            location.reload();
-        }
+        location.href = 'menu.html';
     })
 };
 
