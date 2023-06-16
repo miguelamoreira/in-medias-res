@@ -3,12 +3,35 @@ import * as User from "../model/user_model.js";
 function userView() {
     User.init();
 
+    function displayToast(message, isSuccess = false) {
+        const toast = document.getElementById('errorToast');
+        let result = `
+          <div class="modal-header">
+            <h4 class="modal-title">${isSuccess ? 'Success' : 'Error'}</h4>
+          </div>
+          <div class="modal-body">
+            <p>${message}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btnClose border-0" data-bs-dismiss="modal">Close</button>
+          </div>
+        `;
+        toast.innerHTML = result;
+        $('#errorToast').toast('show');
+      
+        if (document.querySelector('.btnClose')) {
+          document.querySelector('.btnClose').addEventListener('click', function() {
+            $('#errorToast').toast('hide');
+          });
+        }
+    }
+      
     function login(email, password) {
         try {
         User.login(email, password);
         window.location.href = "menu.html";
         } catch (error) {
-        alert(error.message);
+        displayToast(error.message);
         console.error(error); 
         }
     }
@@ -23,7 +46,7 @@ function userView() {
         try {
             login(email, password);
         } catch (error) {
-            alert(error.message);
+            displayToast(error.message);
             console.error(error);
         }
         });
@@ -35,7 +58,7 @@ function userView() {
 
         window.location.href = "inicio_sessao.html";
         } catch (error) {
-        alert(error.message);
+        displayToast(error.message);
         console.error(error); 
         }
     }
@@ -52,7 +75,7 @@ function userView() {
         try {
             register(username, email, password, password2);
         } catch (error) {
-            alert(error.message);
+            displayToast(error.message);
             console.error(error);
         }
         });
@@ -72,10 +95,10 @@ function userView() {
             try {
                 User.changePassword(userInfo.username, oldPass, newPass, confirmPass);
                 users[userIndex] = { ...users[userIndex], password: newPass }; 
-                alert('Palavra-passe alterada com sucesso!');
-                location.href = 'perfil.html'
+                displayToast('Palavra-passe alterada com sucesso!');
+                setTimeout(() => {location.href = 'perfil.html'}, 4000);
             } catch (error) {
-                alert(error.message);
+                displayToast(error.message);
             }
     
             document.getElementById('oldPass').value = '';
@@ -238,8 +261,8 @@ function userView() {
                 users[studentIndex] = student
             })
             localStorage.setItem('users', JSON.stringify(users))
-            alert('Dados guardados com sucesso!');
-            location.href = 'perfil.html'
+            displayToast('Dados guardados com sucesso!');
+            setTimeout(() => {location.href = 'perfil.html'}, 4000);
         })
     }
 
