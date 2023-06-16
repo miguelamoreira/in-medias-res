@@ -214,6 +214,9 @@ function countdownTimer() {
         if (document.getElementById('countdownImg')) {
           document.getElementById('countdownImg').src = '../assets/salas/contador_alerta.png';
         }
+        if (document.getElementById('txtContador')) {
+          document.getElementById('txtContador').style.color = 'white';
+        }
       }
 
       if (userInfo.challenges.length === 8) {
