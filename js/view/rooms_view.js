@@ -152,6 +152,16 @@ function countdownTimer() {
 
   let goneTime = localStorage.getItem('goneTime');
   let remainingTime = localStorage.getItem('remainingTime');
+  let currentRoom = localStorage.getItem('currentRoom');
+
+  if (location.href.includes('jogar_1.html')) {
+    goneTime = null;
+    remainingTime = null;
+    currentRoom = null;
+    localStorage.removeItem('goneTime');
+    localStorage.removeItem('remainingTime');
+    localStorage.removeItem('currentRoom');
+  }
 
   const startTime = goneTime ? new Date().getTime() - goneTime : new Date().getTime() - remainingTime;
 
@@ -164,12 +174,14 @@ function countdownTimer() {
 
     localStorage.setItem('goneTime', goneTime);
     localStorage.setItem('remainingTime', remainingTime);
+    localStorage.setItem('currentRoom', currentRoom);
 
     if (remainingTime <= 0) {
       clearInterval(countdown);
       document.getElementById("txtContador").innerHTML = "00:00";
       localStorage.removeItem('goneTime');
       localStorage.removeItem('remainingTime');
+      localStorage.removeItem('currentRoom');
       result = result += `
       <div class="modal-header">
         <h4 class="modal-title">Fim do tempo</h4>
@@ -191,6 +203,7 @@ function countdownTimer() {
         location.href = "menu.html"
         localStorage.removeItem('goneTime');
         localStorage.removeItem('remainingTime');
+        localStorage.removeItem('currentRoom');
       });
 
     } else {
@@ -207,7 +220,6 @@ function countdownTimer() {
 
       let countdownText = formMinRemaining + ":" + formSecRemaining;
       document.getElementById("txtContador").innerHTML = countdownText;
-    
       let countdownRemaining = formMinRemaining + formSecRemaining;
 
       if (countdownRemaining <= '0500') {
@@ -221,8 +233,8 @@ function countdownTimer() {
 
       if (userInfo.challenges.length === 8) {
         clearInterval(countdown);
-        let userTime = userInfo.time.replace(':', '');
-        let countdownGone = formMinGone + formSecGone;
+        let userTime = parseInt(userInfo.time.replace(':', ''));
+        let countdownGone = parseInt(formMinGone + formSecGone);
       
         if (countdownGone < userTime) {
           let countdownSave = formMinGone + ":" + formSecGone;
@@ -235,7 +247,6 @@ function countdownTimer() {
     }
   }, 1000);
 }
-
 
 function renderModalInfo() {
   let userInfo = getUserLogged();
@@ -451,7 +462,7 @@ export function renderProgressBar() {
     progressBar.style.width = '75%';
     progressBar.innerHTML = '3/4';
   } else if (userInfo.challenges.length === 4 || userInfo.challenges.length === 8) {
-    progressBar.style.width = '100%';
+    progressBar.style.width = '100%'; 
     progressBar.innerHTML = '4/4';
   };
 

@@ -135,7 +135,7 @@ h1 {
 
 @media (max-width: 768px) {
     #cardImg {
-        content: url("../assets/card.png");
+        content: url("../assets/elementos_logo/card.png");
     }
 }
 
@@ -149,6 +149,12 @@ h1 {
     .img-fluid{
         width: 6em;
         margin-bottom: -1em;
+    }
+}
+
+@media (min-width: 769px) and (max-width:1549px) {
+    .card {
+        width: 60em;
     }
 }
 

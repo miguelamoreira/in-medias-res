@@ -112,6 +112,12 @@ function userView() {
             location.href = 'alterar_passe.html';
         })
     }
+
+    if (document.getElementById('btnChange')) {
+        document.getElementById('btnChange').addEventListener('click', () => {
+            location.href = 'avatar.html';
+        })
+    }
     
     if (document.getElementById('btnScroll')) {
         const firstTxt = document.querySelector('.visible');
