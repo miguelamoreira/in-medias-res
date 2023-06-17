@@ -1,4 +1,5 @@
 import {isLogged, getUserLogged, getUsers} from "./model/user_model.js"
+import {displayToast} from "./view/user_view.js"
 
 if (isLogged()) {
   document.querySelector('#txtLogin').innerHTML = 'PERFIL';
@@ -43,10 +44,10 @@ document.querySelector("#btnPlay").addEventListener("click", () => {
         location.href = "jogar_2.html";
       }
     } else {
-      alert('Estás bloqueado. Contacta o teu professor para conseguires jogar.')
+      displayToast('Estás bloqueado. Contacta o teu professor para conseguires jogar.')
     }
   } else {
-    alert('Precisas de estar autenticado para poder jogar!');
+    displayToast('Precisas de estar autenticado para poder jogar!');
   }
 })
   

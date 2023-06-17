@@ -62,7 +62,7 @@ body {
 	animation: animateCloud 30s linear infinite;
 }
 
-#btnLogOut, #btnScroll {
+#btnLogOut, #btnScroll, #btnMenu {
     background-color: transparent;
     border: none;
     overflow: hidden;
@@ -78,7 +78,11 @@ body {
     height: 5em;
 }
 
-.img:hover {
+.menu:hover {
+    content: url('../assets/botoes/menu_depois.png');
+}
+
+.logout:hover {
     content: url('../assets/botoes/logout_depois.png');
 }
 

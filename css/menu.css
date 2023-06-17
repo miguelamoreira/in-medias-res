@@ -20,7 +20,11 @@ body {
     height: 5em;
 }
 
-.img:hover {
+.menu:hover {
+    content: url('../assets/botoes/menu_depois.png');
+}
+
+.logout:hover {
     content: url('../assets/botoes/logout_depois.png');
 }
 

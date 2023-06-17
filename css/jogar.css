@@ -50,7 +50,7 @@ li {
     background: #F6F6F6;
     border: 1px solid #769ED2;
     border-radius: 0.5em;
-    font-family: 'Futura-Medium', sans-serif;
+    font-family: 'Futura PT', sans-serif;
     font-size: 1em;
     height: 2.5em;
 }
@@ -94,7 +94,7 @@ button {
     top: 50%;
     left: 8.5em;
     transform: translate(-50%, -50%);
-    font-family: 'Futura-Medium', sans-serif;
+    font-family: 'Futura PT', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 22px;
@@ -106,7 +106,7 @@ button {
 }
 
 .progress-percentage, .progress-bar {
-    font-family: 'Futura-Medium', sans-serif;
+    font-family: 'Futura PT', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 20px;

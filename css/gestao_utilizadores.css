@@ -58,7 +58,7 @@ body {
 	animation: animateCloud 30s linear infinite;
 }
 
-#btnLogOut, #btnSave {
+#btnLogOut, #btnSave, #btnMenu {
     background-color: transparent;
     border: none;
     overflow: hidden;
@@ -74,7 +74,11 @@ body {
     height: 5em;
 }
 
-.img:hover {
+.menu:hover {
+    content: url('../assets/botoes/menu_depois.png');
+}
+
+.logout:hover {
     content: url('../assets/botoes/logout_depois.png');
 }
 
@@ -97,7 +101,7 @@ h1 {
     letter-spacing: 0.11em;
 }
 
-p, .username {
+h2, .username {
     color: rgba(255, 237, 199, 1);
     font-family: 'Futura PT', sans-serif;
     font-weight: 500;
