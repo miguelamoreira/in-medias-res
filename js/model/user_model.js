@@ -62,12 +62,12 @@ export function getUsers() {
 }
 
 export const avatares = [
-    'Stitch.png',
-    'Mickey.png',
-    'Moana.png',
-    'Boo.png',
-    'Pooh.png',
-    'Remy.png'
+    'Stitch',
+    'Mickey',
+    'Moana',
+    'Boo',
+    'Pooh',
+    'Remy'
 ]
 
 class user {

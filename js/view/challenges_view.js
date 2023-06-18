@@ -247,7 +247,7 @@ function renderModalAnswered(answer) {
             result += `
             <div class="modal-body text-center">
               <p>Parabéns! Conseguiste completar o desafio e, como recompensa, desbloqueaste um avatar.<br>Continua a resolver desafios para ganhar mais! </p>
-              <img src="../assets/avatares/${avatares[3]}" class="img-fluid mt-3">
+              <img src="../assets/avatares/${avatares[3]}.png" class="img-fluid mt-3">
             </div>
             `
           } else {
@@ -274,7 +274,7 @@ function renderModalAnswered(answer) {
           result += `
           <div class="modal-body text-center">
             <p>Parabéns! Conseguiste completar o desafio e, como recompensa, desbloqueaste um avatar.<br>Continua a resolver desafios para ganhar mais! </p>
-            <img src="../assets/avatares/${avatares[4]}" class="img-fluid mt-3">
+            <img src="../assets/avatares/${avatares[4]}.png" class="img-fluid mt-3">
           </div>
           `
         } else {

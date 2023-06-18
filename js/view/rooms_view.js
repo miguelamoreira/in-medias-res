@@ -317,7 +317,7 @@ function renderDoorModal() {
     </div>
     <div class="modal-body text-center">
       <p>Parabéns! Conseguiste completar a primeira sala e, como recompensa, desbloqueaste um avatar.<br>Continua a resolver desafios para ganhar mais! </p>
-      <img src="../assets/avatares/${avatares[5]}" class="img-fluid mt-3">
+      <img src="../assets/avatares/${avatares[5]}.png" class="img-fluid mt-3">
     </div>
     `;
   } else if (userInfo.challenges.length >= 4 && userInfo.challenges.length < 8) {

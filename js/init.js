@@ -19,7 +19,7 @@ function initdata() {
             email: "joaozinho@imr.com",
             password: "pass2",
             image: "../assets/avatares/Stitch.png",
-            time: "00:00",
+            time: "N/A",
             pins: 0,
             status: "Ativo",
             type: "Professor",
