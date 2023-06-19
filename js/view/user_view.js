@@ -223,9 +223,7 @@ function userView() {
 
         document.querySelectorAll('.user-action').forEach(userAction => {
             let student = students.find(student => userAction.querySelector('p').innerHTML == student.username)
-            console.log(userAction);
             userAction.querySelector('.btnAction').addEventListener('click', function() {
-                console.log(student);
                 if (student.status === 'Ativo') {
                     student.status = 'Inativo'
                     userAction.querySelector('.btnAction').innerHTML = 'ATIVAR'

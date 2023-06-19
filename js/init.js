@@ -70,7 +70,6 @@ function initdata() {
             challenges: [],
           },
         ];
-        console.log("inject");
         localStorage.setItem("users", JSON.stringify(users));
       }
 }

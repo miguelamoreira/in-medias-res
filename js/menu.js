@@ -27,7 +27,7 @@ document.querySelector("#btnLeaderboard").addEventListener("click", () => {
   
 document.querySelector("#btnPlay").addEventListener("click", () => {
   if (isLogged()) {
-    const userInfo = getUserLogged();
+    let userInfo = getUserLogged();
     if (userInfo.status == 'Ativo') {
       let users = getUsers()
       if (userInfo.challenges.length < 4 || userInfo.challenges.length === 8) {
