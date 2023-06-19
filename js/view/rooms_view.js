@@ -19,7 +19,7 @@ if (document.getElementById('salaSair')) {
       users[userIndex] = userInfo
       localStorage.setItem('users', JSON.stringify(users))
     } else {
-      userInfo = users.find(user => user.username = userInfo.username)
+      userInfo = users.find(user => user.username === userInfo.username)
     }
     Challenge.deleteRoomCodes();
     Challenge.deleteOpenedModals();
@@ -254,22 +254,24 @@ function countdownTimer() {
       }
 
       if (userInfo.challenges.length === 8) {
-        clearInterval(countdown);
-        let userTime = (userInfo.time == 'N/A' ? userInfo.time : parseInt(userInfo.time.replace(':', '')))
-        let countdownGone = parseInt(formMinGone + formSecGone);
+        document.querySelector('#btnDismissDoor').addEventListener('click', () => {
+          clearInterval(countdown);
+          let userTime = (userInfo.time == 'N/A' ? userInfo.time : parseInt(userInfo.time.replace(':', '')))
+          let countdownGone = parseInt(formMinGone + formSecGone);
 
-        if (userTime == 'N/A' || countdownGone < userTime) {
-          let countdownSave = formMinGone + ":" + formSecGone;
+          if (userTime == 'N/A' || countdownGone < userTime) {
+            let countdownSave = formMinGone + ":" + formSecGone;
 
-          userInfo.time = countdownSave;
+            userInfo.time = countdownSave;
 
-          let users = getUsers()
-          let userIndex = users.findIndex(user => user.username === userInfo.username)
-          users[userIndex] = userInfo
+            let users = getUsers()
+            let userIndex = users.findIndex(user => user.username === userInfo.username)
+            users[userIndex] = userInfo
 
-          localStorage.setItem('users', JSON.stringify(users))
-          sessionStorage.setItem(`loggedUser`, JSON.stringify(userInfo));
-        }
+            localStorage.setItem('users', JSON.stringify(users))
+            sessionStorage.setItem(`loggedUser`, JSON.stringify(userInfo));
+          }
+        })
       }
     }
   }, 1000);
@@ -379,7 +381,7 @@ function renderDoorModal() {
       </div>
     </div>
     <div class="modal-footer">
-      <button type="button" id="btnDismiss" class="btn btnClose border-0">Fechar</button>
+      <button type="button" id="btnDismissDoor" class="btn btnClose border-0">Fechar</button>
     </div>
     `;
 
@@ -388,7 +390,7 @@ function renderDoorModal() {
   if (userInfo.challenges.length < 8) {
     result += `
     <div class="modal-footer">
-      <button type="button" id="btnDismiss" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
+      <button type="button" id="btnDismissDoor" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
     </div>
     `
   }
@@ -397,7 +399,7 @@ function renderDoorModal() {
   $('#variableModal').modal('show');
 
   if (((userInfo.challenges.length === 4 && location.href.includes('jogar_1.html')) || userInfo.challenges.length === 8)) {
-    document.querySelector('#btnDismiss').addEventListener('click', () => {
+    document.querySelector('#btnDismissDoor').addEventListener('click', () => {
       if (userInfo.challenges.length === 8) {
         let result = ''
         if (userInfo.pins === 8) {

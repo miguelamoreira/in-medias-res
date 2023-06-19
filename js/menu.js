@@ -27,13 +27,23 @@ document.querySelector("#btnLeaderboard").addEventListener("click", () => {
   
 document.querySelector("#btnPlay").addEventListener("click", () => {
   if (isLogged()) {
-    let userInfo = getUserLogged();
+    const userInfo = getUserLogged();
     if (userInfo.status == 'Ativo') {
+      let users = getUsers()
       if (userInfo.challenges.length < 4 || userInfo.challenges.length === 8) {
+        userInfo.pins = 0;
+        userInfo.challenges = []
+        
+        let userIndex = users.findIndex(user => user.username === userInfo.username)
+        users[userIndex] = userInfo
+        localStorage.setItem('users', JSON.stringify(users))
+  
         location.href = "jogar_1.html";
       } else {
+        userInfo = users.find(user => user.username === userInfo.username)
         location.href = "jogar_2.html";
       }
+      sessionStorage.setItem('loggedUser', JSON.stringify(userInfo))
     } else {
       displayToast('Estás bloqueado. Contacta o teu professor para conseguires jogar.')
     }
