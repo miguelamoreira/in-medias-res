@@ -131,6 +131,10 @@ h2, .username {
     text-align: center;
 }
 
+.list-users {
+    height: 44vh
+}
+
 @media (max-width: 576px) {
     .img {
         width: 4em;

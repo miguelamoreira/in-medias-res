@@ -8,6 +8,22 @@ $(document).ready(function(e) {
 
 if (document.getElementById('salaSair')) {
   const btnSair = document.getElementById('salaSair').addEventListener('click', () => {
+    let userInfo = getUserLogged();
+    let users = getUsers()
+
+    if (userInfo.challenges.length < 4 || userInfo.challenges.length === 8) {
+      userInfo.pins = 0;
+      userInfo.challenges = []
+      
+      let userIndex = users.findIndex(user => user.username === userInfo.username)
+      users[userIndex] = userInfo
+      localStorage.setItem('users', JSON.stringify(users))
+    } else {
+      userInfo = users.find(user => user.username = userInfo.username)
+    }
+    Challenge.deleteRoomCodes();
+    Challenge.deleteOpenedModals();
+    sessionStorage.setItem('loggedUser', JSON.stringify(userInfo))
     location.href = 'menu.html';
   })
 }
@@ -148,19 +164,20 @@ if (document.getElementById('bolaPixar')) {
 };
 
 function countdownTimer() {
+  let userInfo = getUserLogged()
   const countdownDuration = 30 * 60 * 1000;
 
-  let goneTime = localStorage.getItem('goneTime');
-  let remainingTime = localStorage.getItem('remainingTime');
-  let currentRoom = localStorage.getItem('currentRoom');
+  let goneTime = localStorage.getItem(`goneTime_${userInfo.username}`);
+  let remainingTime = localStorage.getItem(`remainingTime_${userInfo.username}`);
+  let currentRoom = localStorage.getItem(`currentRoom_${userInfo.username}`);
 
   if (location.href.includes('jogar_1.html')) {
     goneTime = null;
     remainingTime = null;
     currentRoom = null;
-    localStorage.removeItem('goneTime');
-    localStorage.removeItem('remainingTime');
-    localStorage.removeItem('currentRoom');
+    localStorage.removeItem(`goneTime_${userInfo.username}`);
+    localStorage.removeItem(`remainingTime_${userInfo.username}`);
+    localStorage.removeItem(`currentRoom_${userInfo.username}`);
   }
 
   const startTime = goneTime ? new Date().getTime() - goneTime : new Date().getTime() - remainingTime;
@@ -172,16 +189,21 @@ function countdownTimer() {
     goneTime = currentTime - startTime;
     remainingTime = countdownDuration - goneTime;
 
-    localStorage.setItem('goneTime', goneTime);
-    localStorage.setItem('remainingTime', remainingTime);
-    localStorage.setItem('currentRoom', currentRoom);
+    if (currentRoom === null && location.href.includes('jogar_2.html')) {
+      // Transition from room 1 to room 2
+      currentRoom = 'room2';
+      localStorage.setItem(`currentRoom_${userInfo.username}`, currentRoom);
+    }
+
+    localStorage.setItem(`goneTime_${userInfo.username}`, goneTime);
+    localStorage.setItem(`remainingTime_${userInfo.username}`, remainingTime);
 
     if (remainingTime <= 0) {
       clearInterval(countdown);
       document.getElementById("txtContador").innerHTML = "00:00";
-      localStorage.removeItem('goneTime');
-      localStorage.removeItem('remainingTime');
-      localStorage.removeItem('currentRoom');
+      localStorage.removeItem(`goneTime_${userInfo.username}`);
+      localStorage.removeItem(`remainingTime_${userInfo.username}`);
+      localStorage.removeItem(`currentRoom_${userInfo.username}`);
       result = result += `
       <div class="modal-header">
         <h4 class="modal-title">Fim do tempo</h4>
@@ -191,19 +213,19 @@ function countdownTimer() {
         <img src="../assets/img_modal/sadness.png" class="img-fluid mt-3">
       </div>
       <div class="modal-footer">
-      <button type="button" id="btnDismiss" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" id="btnDismiss" class="btn btnClose border-0" data-bs-dismiss="modal">Fechar</button>
       </div>
-      `
+      `;
 
-      document.querySelector('#variableModal .modal-content').innerHTML = result
+      document.querySelector('#variableModal .modal-content').innerHTML = result;
       $('#variableModal').modal('show');
 
       document.querySelector('#btnDismiss').addEventListener('click', () => {
         Challenge.deleteRoomCodes();
-        location.href = "menu.html"
-        localStorage.removeItem('goneTime');
-        localStorage.removeItem('remainingTime');
-        localStorage.removeItem('currentRoom');
+        location.href = "menu.html";
+        localStorage.removeItem(`goneTime_${userInfo.username}`);
+        localStorage.removeItem(`remainingTime_${userInfo.username}`);
+        localStorage.removeItem(`currentRoom_${userInfo.username}`);
       });
 
     } else {
@@ -233,15 +255,20 @@ function countdownTimer() {
 
       if (userInfo.challenges.length === 8) {
         clearInterval(countdown);
-        let userTime = parseInt(userInfo.time.replace(':', ''));
+        let userTime = (userInfo.time == 'N/A' ? userInfo.time : parseInt(userInfo.time.replace(':', '')))
         let countdownGone = parseInt(formMinGone + formSecGone);
-      
-        if (countdownGone < userTime) {
+
+        if (userTime == 'N/A' || countdownGone < userTime) {
           let countdownSave = formMinGone + ":" + formSecGone;
-    
+
           userInfo.time = countdownSave;
-          sessionStorage.setItem('loggedUser', JSON.stringify(userInfo));
-          localStorage.setItem('loggedUser', JSON.stringify(userInfo));
+
+          let users = getUsers()
+          let userIndex = users.findIndex(user => user.username === userInfo.username)
+          users[userIndex] = userInfo
+
+          localStorage.setItem('users', JSON.stringify(users))
+          sessionStorage.setItem(`loggedUser`, JSON.stringify(userInfo));
         }
       }
     }
@@ -356,11 +383,7 @@ function renderDoorModal() {
     </div>
     `;
 
-    sessionStorage.removeItem('hasOpenedModal1');
-    sessionStorage.removeItem('hasOpenedModal2');
-    sessionStorage.removeItem('hasOpenedLesson1');
-    sessionStorage.removeItem('hasOpenedLesson2');
-    sessionStorage.removeItem('hasOpenedLesson3');
+    Challenge.deleteOpenedModals();
   }
   if (userInfo.challenges.length < 8) {
     result += `

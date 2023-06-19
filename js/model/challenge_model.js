@@ -76,3 +76,11 @@ export function deleteRoomCodes() {
   sessionStorage.removeItem('roomCode');
   sessionStorage.removeItem('userCode');
 }
+
+export function deleteOpenedModals() {
+  sessionStorage.removeItem('hasOpenedModal1');
+  sessionStorage.removeItem('hasOpenedModal2');
+  sessionStorage.removeItem('hasOpenedLesson1');
+  sessionStorage.removeItem('hasOpenedLesson2');
+  sessionStorage.removeItem('hasOpenedLesson3');
+}
